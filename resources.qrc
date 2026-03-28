@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="img">
+    <file>img/puc-goias-logo-png_seeklogo-354026-removebg-preview.png</file>
+    <file>img/btn_remove_hover.png</file>
+    <file>img/btn_remove_normal.png</file>
+    <file>img/btn_remove_pressed.png</file>
+    <file>img/btn_add_hover.png</file>
+    <file>img/btn_add_pressed.png</file>
+    <file>img/btn_add_normal.png</file>
+  </qresource>
+</RCC>

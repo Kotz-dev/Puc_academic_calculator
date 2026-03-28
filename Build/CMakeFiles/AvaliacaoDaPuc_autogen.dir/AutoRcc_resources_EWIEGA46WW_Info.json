@@ -1,0 +1,31 @@
+{
+	"BUILD_DIR" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/AvaliacaoDaPuc_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator",
+	"CMAKE_SOURCE_DIR" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "NMake Makefiles",
+	"INCLUDE_DIR" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/AvaliacaoDaPuc_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/btn_add_hover.png",
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/btn_add_normal.png",
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/btn_remove_normal.png",
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/btn_remove_hover.png",
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/puc-goias-logo-png_seeklogo-354026-removebg-preview.png",
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/btn_add_pressed.png",
+		"C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/img/btn_remove_pressed.png"
+	],
+	"LOCK_FILE" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/AvaliacaoDaPuc_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.9.1/msvc2022_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/AvaliacaoDaPuc_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/resources.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

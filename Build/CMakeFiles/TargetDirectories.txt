@@ -1,0 +1,5 @@
+C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/AvaliacaoDaPuc.dir
+C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/edit_cache.dir
+C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/rebuild_cache.dir
+C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/AvaliacaoDaPuc_autogen_timestamp_deps.dir
+C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/CMakeFiles/AvaliacaoDaPuc_autogen.dir

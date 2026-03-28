@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+6937fac41fa5d534dbb9d63c9940d572 AvaliacaoDaPuc_autogen/EWIEGA46WW/qrc_resources.cpp
+99e392d95d8863177acbe008d8a80cd8 AvaliacaoDaPuc_autogen/timestamp
+d4786e773016bee2b147b6f540b96c52 CMakeFiles/AvaliacaoDaPuc_autogen

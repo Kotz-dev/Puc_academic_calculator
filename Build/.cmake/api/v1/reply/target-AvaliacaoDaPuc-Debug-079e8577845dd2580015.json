@@ -1,0 +1,696 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "AvaliacaoDaPuc.exe"
+		},
+		{
+			"path" : "AvaliacaoDaPuc.pdb"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"_add_executable",
+			"add_executable",
+			"target_link_libraries",
+			"set_target_properties",
+			"include",
+			"_find_package",
+			"find_package",
+			"add_compile_options",
+			"add_compile_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"C:/Users/KoTz/vcpkg/scripts/buildsystems/vcpkg.cmake",
+			"CMakeLists.txt",
+			"C:/Qt/6.9.1/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
+			"C:/Qt/6.9.1/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+			"C:/Qt/6.9.1/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake",
+			"C:/Qt/6.9.1/msvc2022_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
+			"C:/Qt/6.9.1/msvc2022_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 612,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 100,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 28,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 908,
+				"parent" : 4
+			},
+			{
+				"file" : 4,
+				"parent" : 5
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 218,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 908,
+				"parent" : 7
+			},
+			{
+				"file" : 3,
+				"parent" : 8
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 57,
+				"parent" : 9
+			},
+			{
+				"file" : 2,
+				"parent" : 10
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 61,
+				"parent" : 11
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 218,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 908,
+				"parent" : 13
+			},
+			{
+				"file" : 6,
+				"parent" : 14
+			},
+			{
+				"command" : 4,
+				"file" : 6,
+				"line" : 55,
+				"parent" : 15
+			},
+			{
+				"file" : 5,
+				"parent" : 16
+			},
+			{
+				"command" : 3,
+				"file" : 5,
+				"line" : 61,
+				"parent" : 17
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 9,
+				"file" : 1,
+				"line" : 33,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi"
+				},
+				{
+					"backtrace" : 19,
+					"fragment" : "/Zi"
+				},
+				{
+					"backtrace" : 19,
+					"fragment" : "/Od"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Zc:__cplusplus"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-permissive-"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-utf-8"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/utf-8"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "FMT_SHARED"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "QT_WIDGETS_LIB"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 20,
+					"define" : "_AMD64_"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 20,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/include"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/include/core"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/include/data"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/include/io"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/include/ui"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/include/utils"
+				},
+				{
+					"backtrace" : 21,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build"
+				},
+				{
+					"backtrace" : 21,
+					"isSystem" : true,
+					"path" : "C:/Users/KoTz/vcpkg/installed/x64-windows/include"
+				},
+				{
+					"backtrace" : 0,
+					"isSystem" : true,
+					"path" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build/AvaliacaoDaPuc_autogen/include"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.9.1/msvc2022_64/include/QtCore"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.9.1/msvc2022_64/include"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.9.1/msvc2022_64/mkspecs/win32-msvc"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.9.1/msvc2022_64/include/QtGui"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.9.1/msvc2022_64/include/QtWidgets"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					3,
+					3,
+					3
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				5,
+				6,
+				8,
+				10,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				32
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "AvaliacaoDaPuc_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "AvaliacaoDaPuc_autogen::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "AvaliacaoDaPuc::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/subsystem:console",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "C:\\Qt\\6.9.1\\msvc2022_64\\lib\\Qt6Cored.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "C:\\Qt\\6.9.1\\msvc2022_64\\lib\\Qt6Guid.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "C:\\Qt\\6.9.1\\msvc2022_64\\lib\\Qt6Widgetsd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "C:\\Users\\KoTz\\vcpkg\\installed\\x64-windows\\debug\\lib\\fmtd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 12,
+				"fragment" : "mpr.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 12,
+				"fragment" : "userenv.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 18,
+				"fragment" : "d3d11.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 18,
+				"fragment" : "dxgi.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 18,
+				"fragment" : "dxguid.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 18,
+				"fragment" : "d3d12.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "AvaliacaoDaPuc",
+	"nameOnDisk" : "AvaliacaoDaPuc.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				5,
+				6,
+				8,
+				10,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				32
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				31,
+				35
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				7,
+				9,
+				11,
+				13,
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				27,
+				28,
+				29,
+				30
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				33,
+				34
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "ui/MainWindow.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "ui/InfoWindow.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "ui/option.ui",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "resources.qrc",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/ui/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/core/GradeSystem.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/core/GradeSystem.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/data/StudentRecord.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/data/StudentRecord.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/io/FileManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/io/FileManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/ui/MainWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/ui/MainWindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/ui/UIManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/ui/UIManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/ui/LanguageManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/ui/LanguageManager.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/ui/PreferencesWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/ui/PreferencesWindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/utils/GlobalAccess.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/utils/GlobalAccess.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/io/JsonParser.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/io/JsonParser.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/data/ErrorLog.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "include/data/ErrorLog.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/io/FileConverter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "src/io/FileConverter.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/include/ui/ui_MainWindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/include/ui/ui_InfoWindow.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/include/ui/ui_option.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/timestamp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/EWIEGA46WW/qrc_resources.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/timestamp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "Build/AvaliacaoDaPuc_autogen/EWIEGA46WW/qrc_resources.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 3,
+			"path" : "C:/Users/KoTz/vcpkg/installed/x64-windows/share/nlohmann_json/nlohmann_json.natvis",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}

@@ -1,0 +1,20 @@
+
+
+QTableWidget {
+     background-color: rgb(255, 255, 255);
+    gridline-color: #353535;
+    color: black;
+    border: 1px solid #353535;
+    border-radius: 5px;
+
+}
+QHeaderView::section {
+    background-color: #353535;
+    color: white;
+    padding: 5px;
+    border: 1px solid #2a2a2a;
+}
+QTableWidget::item {
+    border: 0.5px solid rgb(200, 200, 200);  /* Borda em cada célula */
+    padding: 0.4px;
+}

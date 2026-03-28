@@ -1,0 +1,15 @@
+QTableWidget {
+    background-color: rgb(44, 44, 44);
+    gridline-color: #353535;
+    color: white;
+    border: 1px solid #353535;
+    border-radius: 5px;
+}
+
+/* Estilo do cabeçalho */
+QHeaderView::section {
+    background-color: #353535;
+    color: white;
+    padding: 5px;
+    border: 1px solid #2a2a2a;
+}

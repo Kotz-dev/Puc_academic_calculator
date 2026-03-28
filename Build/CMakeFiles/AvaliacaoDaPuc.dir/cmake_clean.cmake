@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "AvaliacaoDaPuc.exe"
+  "AvaliacaoDaPuc.exe.manifest"
+  "AvaliacaoDaPuc.lib"
+  "AvaliacaoDaPuc.pdb"
+  "AvaliacaoDaPuc_autogen/EWIEGA46WW/qrc_resources.cpp"
+  "AvaliacaoDaPuc_autogen"
+  "CMakeFiles/AvaliacaoDaPuc_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/AvaliacaoDaPuc_autogen.dir/ParseCache.txt"
+  "CMakeFiles/AvaliacaoDaPuc.dir/AvaliacaoDaPuc_autogen/EWIEGA46WW/qrc_resources.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/AvaliacaoDaPuc_autogen/EWIEGA46WW/qrc_resources.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/AvaliacaoDaPuc_autogen/mocs_compilation.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/AvaliacaoDaPuc_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/core/GradeSystem.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/core/GradeSystem.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/data/ErrorLog.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/data/ErrorLog.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/data/StudentRecord.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/data/StudentRecord.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/io/FileConverter.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/io/FileConverter.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/io/FileManager.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/io/FileManager.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/io/JsonParser.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/io/JsonParser.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/LanguageManager.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/LanguageManager.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/MainWindow.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/MainWindow.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/PreferencesWindow.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/PreferencesWindow.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/UIManager.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/UIManager.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/main.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/ui/main.cpp.obj.d"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/utils/GlobalAccess.cpp.obj"
+  "CMakeFiles/AvaliacaoDaPuc.dir/src/utils/GlobalAccess.cpp.obj.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/AvaliacaoDaPuc.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "AvaliacaoDaPuc",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "AvaliacaoDaPuc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AvaliacaoDaPuc-Debug-079e8577845dd2580015.json",
+					"name" : "AvaliacaoDaPuc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AvaliacaoDaPuc_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AvaliacaoDaPuc_autogen-Debug-afecd9185526f1732d39.json",
+					"name" : "AvaliacaoDaPuc_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AvaliacaoDaPuc_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AvaliacaoDaPuc_autogen_timestamp_deps-Debug-991d73103adc5fbddb24.json",
+					"name" : "AvaliacaoDaPuc_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator/Build",
+		"source" : "C:/Users/KoTz/Documents/GitHub/puc-grade-calculator"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}
