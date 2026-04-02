@@ -8,6 +8,12 @@
 #include "JsonParser.h"
 
 
+  // QString ui_styles_ = "";
+  // QString ui_styles__= "";
+  // QString ui_styles_tabel_widget= "";
+  // QString window_light= "";
+
+
 enum OS {
     LINUX = 1,
     WINDOWS = -1
@@ -19,6 +25,7 @@ FileSystemInfo FileManger::info_file_system(FileType type) {
         "",
         false
     };
+
     if (getOperatingSystem() == OS::LINUX) {
         if (FileType::PUCSimulador == type) {
             Cfile.file_ = "/home/" + QDir::home().dirName().toStdString() + "/Documentos/PUCSimulador";
@@ -28,6 +35,7 @@ FileSystemInfo FileManger::info_file_system(FileType type) {
         }
     }
     if (getOperatingSystem() == OS::WINDOWS) {
+
         if (FileType::PUCSimulador == type) {
             Cfile.file_ = QDir::homePath().toStdString() + "/Documents/PUCSimulador";
         }
@@ -36,8 +44,9 @@ FileSystemInfo FileManger::info_file_system(FileType type) {
         }
         if (FileType::FILE_IDIOMA == type)  {
             try {
-                for (auto & i : std::filesystem::recursive_directory_iterator( QDir::homePath().toStdString() + "/Documents")) {
+                for (auto & i : std::filesystem::recursive_directory_iterator( std::filesystem::current_path().remove_filename())) {
                     if (i.path().string().find("idioma.ivx") != std::string::npos) {
+                        qDebug() << i.path().string();
                         Cfile.file_idioma = i.path().string();
                         break;
                     }

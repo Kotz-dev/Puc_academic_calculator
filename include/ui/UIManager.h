@@ -4,24 +4,41 @@
 #include <ui_MainWindow.h>
 #include <QDir>
 #include <nlohmann/adl_serializer.hpp>
+#include "io/FileManager.h"
 
 #include "PreferencesWindow.h"
 #include "ui_option.h"
 
-const QString ui_styles_ = QDir::homePath() + "/Documents/GitHub/puc-grade-calculator/styles/ui_styles.qss";
-const QString ui_styles__ =  "/home/kotz/Documentos/GitHub/puc-grade-calculator/styles/ui_styles.qss";
-const QString ui_styles_tabel_widget = "C:\\Users\\KoTz\\Documents\\GitHub\\puc-grade-calculator\\styles\\styles_tabel_widget.qss";
-const QString window_light = "C:\\Users\\KoTz\\Documents\\GitHub\\puc-grade-calculator\\styles\\window_branco.qss";
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class _windows_; class Style;}
 QT_END_NAMESPACE
+
+
+#ifdef _WIN32
+    static   std::filesystem::path ui_styles_ =  std::filesystem::current_path().remove_filename() / "styles//ui_styles.qss";
+    static   std::filesystem::path ui_styles__ = std::filesystem::current_path().remove_filename() / "styles//ui_styles.qss";
+    static   std::filesystem::path ui_styles_tabel_widget = std::filesystem::current_path().remove_filename() / "styles//styles_tabel_widget.qss";
+    static   std::filesystem::path window_dark =std::filesystem::current_path().remove_filename() / "styles/ui_styles.qss";
+    static   std::filesystem::path window_light =std::filesystem::current_path().remove_filename() / "styles/window_branco.qss";
+#endif
+
+
+#ifdef __linux__
+    // static   std::filesystem::path ui_styles_ =  std::filesystem::current_path().remove_filename() / "styles\\ui_styles.qss";
+    // static   QString ui_styles__;
+    // static   QString ui_styles_tabel_widget;
+    // static   QString window_light;
+#endif
+
+
+
 
 namespace Style_Table {
         class Style {
         public :
             static void table_result(QTableWidget *ui,int index,int pos);
             static void clear_table(QTableWidget *ui,int h,int colune);
+            Style();
     };
 
 }

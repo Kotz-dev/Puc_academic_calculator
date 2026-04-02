@@ -59,7 +59,6 @@ inline int getOperatingSystem () {
  return 0;
 }
 
-
 using Json = nlohmann::json;
 
 struct  FileStatus {

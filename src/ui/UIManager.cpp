@@ -7,6 +7,16 @@
 #include "GlobalAccess.h"
 #include "JsonParser.h"
 
+Style_Table::Style::Style() {
+    // if (getOperatingSystem() == -1) {
+    //     window_light           =  QString::fromStdWString(std::filesystem::current_path()/"styles//window_branco.qss");
+    //     ui_styles_             =  QString::fromStdWString(std::filesystem::current_path().remove_filename().append("styles\\ui_styles.qss")));
+    //     ui_styles__            =  QString::fromStdWString(std::filesystem::current_path().remove_filename().append("styles\\ui_styles.qss"));
+    //     ui_styles_tabel_widget =  QString::fromStdWString(std::filesystem::current_path().remove_filename().append("styles\\styles_tabel_widget.qss"));
+    // }
+
+}
+
 void Style_Table::Style::table_result(QTableWidget *ui,int index,int ps) {
      if (ui != nullptr) {
          if (ps == 0) {
@@ -75,7 +85,8 @@ void ui_controller::TableWidget(Ui__windows_ *ui) {
 }
 
 void ui_controller::Window_Dark(Ui__windows_ *ui) {
-    QFile filew{window_light};
+    qDebug() << window_dark;
+    QFile filew{window_dark};
     if (ui != nullptr) {
         filew.open(QFile::ReadOnly);
         QString styleSheet = filew.readAll();

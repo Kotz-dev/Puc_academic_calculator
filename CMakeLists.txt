@@ -23,7 +23,7 @@ endif()
 # -------------------------
 # Bibliotecas externas
 # -------------------------
-find_path(RAPIDCSV_INCLUDE_DIRS "rapidcsv.h")
+#find_path(RAPIDCSV_INCLUDE_DIRS "rapidcsv.h")
 find_package(fmt CONFIG REQUIRED)
 find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -38,7 +38,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/include/ui
         ${CMAKE_SOURCE_DIR}/include/utils
         ${CMAKE_CURRENT_BINARY_DIR}
-        ${RAPIDCSV_INCLUDE_DIRS}
+       # ${RAPIDCSV_INCLUDE_DIRS}
 )
 
 # Definição do caminho das UI (Qt)

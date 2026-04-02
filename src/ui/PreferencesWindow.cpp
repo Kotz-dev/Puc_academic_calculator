@@ -15,7 +15,24 @@
 #include "UIManager.h"
 #include <fmt/std.h>
 
+
+void option::on_fontComboBox_currentIndexChanged(int index) {
+
+}
+
+//idioma
+void option::on_comboBox_currentIndexChanged(int index) {
+     is_seleciton_idioma = true;
+}
+
+void option::on_Combox_tema_currentIndexChanged(int index) {
+   is_seleciton_theme = true;
+}
+
 option::option(QWidget *parent) : QMainWindow(parent), ui_option_(new Ui::option) {
+    is_seleciton_idioma = false;
+    is_seleciton_theme = false;
+    is_seleciton_fonte = false;
     ui_option_->setupUi(this);
     GLOBAL::init_global(ui_option_);
     auto value = GLOBAL::json["Fonte"];
@@ -99,11 +116,17 @@ void option::on_btn_aplicar_clicked() {
         Palavra_chave = "PreferenceSystem";
         idi = "Português";
     }
-    LanguageUI::UpdateLanguage_UI(idioma);
-    setWindowTitle(QString::fromStdString
-            (LanguageUI::getLanguageJsonValue(idi,Palavra_chave))
-            .remove(""));
-    ui_controller::WindowSystemTema(ui_option_->Combox_tema->currentText());
+    if (is_seleciton_idioma == true) {
+        LanguageUI::UpdateLanguage_UI(idioma);
+        setWindowTitle(QString::fromStdString
+          (LanguageUI::getLanguageJsonValue(idi,Palavra_chave))
+          .remove(""));
+    }
+    if (is_seleciton_theme == true) {
+        ui_controller::WindowSystemTema(ui_option_->Combox_tema->currentText());
+    }
+     is_seleciton_idioma = false;
+     is_seleciton_theme = false;
 }
 void option::on_btn_salvar_clicked() {
 

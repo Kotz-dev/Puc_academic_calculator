@@ -20,8 +20,6 @@ QT_END_NAMESPACE
      int intervalo = 0;
      int ligado    = 0;
 };
-
-
 class option : public QMainWindow , public info_save_automatico {
     Q_OBJECT
 
@@ -29,6 +27,9 @@ private slots:
     void on_btn_aplicar_clicked();
     void on_btn_salvar_clicked();
     void on_btn_search_paste_clicked();
+    void on_Combox_tema_currentIndexChanged(int index);
+    void on_comboBox_currentIndexChanged(int index);
+    void on_fontComboBox_currentIndexChanged(int index);
     void set_setting (QString Theme,QString idioma,QString Fonte);
 public:
     explicit option(QWidget *parent = nullptr);
@@ -37,7 +38,9 @@ public:
 
 private:
     Ui::option *ui_option_;
-
+     bool is_seleciton_theme;
+     bool is_seleciton_idioma;
+     bool is_seleciton_fonte;
     QString file_antigo;
 };
 
