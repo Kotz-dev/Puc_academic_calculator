@@ -15,5 +15,4 @@ StudentRecord::StudentRecord(QString nome ,int aula_prevista,int aula_ministrada
     this->attendance_count  = numero_presenca;
     this->N1 = N1;
     this->N2 = N2;
-    this->N2 = N2;
 }

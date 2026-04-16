@@ -6,6 +6,7 @@
 #include <ui_option.h>
 #include "io/FileManager.h"
 #include "utils/GlobalAccess.h"
+#include "io/JsonParser.h"
 
 LanguageUI::LanguageUI() {}
 
@@ -13,10 +14,7 @@ void LanguageUI::initialize(Json & config, Ui::MainWindow * mainWindowUi, QStrin
     if (config.empty() == true) {
          return;
      }
-    QFile file{GLOBAL::FILE_PATHS::LANGUAGE};
-    if (file.exists() == true) {
-        file.open(QFile::ReadOnly | QFile::Text);
-        nlohmann::json json = nlohmann::json::parse(file.readAll().toStdString());
+    if (JsonParser::LoadJson(GLOBAL::FILE_PATHS::LANGUAGE).exist == true) {
         QString idioma = QString::fromStdString(config["idioma"]);
         currentLanguage = idioma;
         applyLanguage(idioma);
@@ -30,25 +28,18 @@ nlohmann::json LanguageUI::getTranslation(QString languageKey, QString textKey) 
     if (languageKey == "Ingles") {
         languageKey = "en";
     }
-    QFile file{GLOBAL::FILE_PATHS::LANGUAGE};
-    file.open(QFile::ReadOnly | QFile::Text);
-    try {
-       json = nlohmann::json::parse(file.readAll().toStdString());
-    }catch (nlohmann::json::exception & e) {
-        return nlohmann::json {};
-    }
-    return json[languageKey.toStdString()][textKey.toStdString()];
+    return JsonParser::LoadJson(GLOBAL::FILE_PATHS::LANGUAGE).json[languageKey.toStdString()][textKey.toStdString()];
 }
 
 int LanguageUI::getLanguageIndex(QString languageKey) {
-    if (languageKey == "Ingles" || languageKey == "en" || languageKey == "en-us" || languageKey == "En" || languageKey == "EN") {
+    QString key = languageKey.toLower();
+    if (key == "ingles" || key == "en" || key == "en-us") {
         return 1;
     }
-    if (languageKey == "Português"|| languageKey == "pt" || languageKey == "pt-br"
-            || languageKey == "portugues"
-            || languageKey == "Portugues") {
-        return 0;
+    if (key == "português" || key == "pt" || key == "pt-br" || key == "portugues") {
+       return 0;
     }
+    return -1;
 }
 
 void LanguageUI::applyLanguage(QString & languageKey) {
@@ -56,20 +47,16 @@ void LanguageUI::applyLanguage(QString & languageKey) {
     if (languageKey.isEmpty()) {
         return;
     }
-    QFile filew{GLOBAL::FILE_PATHS::LANGUAGE};
-    filew.open(QFile::ReadOnly | QFile::Text);
     nlohmann::json json;
-    try {
-        json = nlohmann::json::parse(filew.readAll().toStdString());
-    }catch (nlohmann::json::exception & e) {
-          return;
-    }
+    json = JsonParser::LoadJson(GLOBAL::FILE_PATHS::LANGUAGE).json;
+
     std::vector<QString>    menu_arquivo(GLOBAL::WINDOW::UI->menuArquivos->actions().size()+1);
     std::vector<QString>    menu_ferramentas(GLOBAL::WINDOW::UI->menuFerramentas->actions().size()+1);
     std::array<QString,10>  menu_option;
     std::vector<QString>    tabela_aluno(GLOBAL::WINDOW::UI->tableWidget->columnCount());
+    QString key = languageKey.toLower();
 
-        if (languageKey == "Ingles" || languageKey == "en" || languageKey == "en-us" || languageKey == "En" || languageKey == "EN") {
+        if (key == "ingles" || key == "en" || key == "en-us") {
 
             menu_arquivo[0] = QString::fromStdString(json["en"]["arquivo"]).remove('"');
             menu_arquivo[1] = QString::fromStdString(json["en"]["novo"]).remove('"');
@@ -94,9 +81,7 @@ void LanguageUI::applyLanguage(QString & languageKey) {
             menu_option[3] =  QString::fromStdString(json["en"]["Tema"]).remove('"');
             menu_option[4] =  QString::fromStdString(json["en"]["Fonte"]).remove('"');
         }
-        if (languageKey == "Português"|| languageKey == "pt" || languageKey == "pt-br"
-            || languageKey == "portugues"
-            || languageKey == "Portugues") {
+        if (key == "português" || key == "pt" || key == "pt-br" || key == "portugues") {
 
             menu_arquivo[0] = QString::fromStdString(json["Português"]["file"]).remove('"');
             menu_arquivo[1] = QString::fromStdString(json["Português"]["new"]).remove('"');
@@ -144,11 +129,11 @@ void LanguageUI::applyLanguage(QString & languageKey) {
             GLOBAL::WINDOW::UI->menuFerramentas->setTitle(menu_ferramentas[0]);
             GLOBAL::WINDOW::UI->actionOpition->setText(menu_ferramentas[1]);;
 
-          if (GLOBAL::WINDOW::_ui_option != nullptr) {
-               GLOBAL::WINDOW::_ui_option->ui()->label->setText(menu_option[0]);
-               GLOBAL::WINDOW::_ui_option->ui()->btn_aplicar->setText(menu_option[1]);
-               GLOBAL::WINDOW::_ui_option->ui()->btn_salvar->setText(menu_option[2]);
-               GLOBAL::WINDOW::_ui_option->ui()->label_tema->setText(menu_option[3]);
+          if (GLOBAL::WINDOW::ui_PrenferecesWindow != nullptr) {
+               GLOBAL::WINDOW::ui_PrenferecesWindow->ui()->label->setText(menu_option[0]);
+               GLOBAL::WINDOW::ui_PrenferecesWindow->ui()->btn_aplicar->setText(menu_option[1]);
+               GLOBAL::WINDOW::ui_PrenferecesWindow->ui()->btn_salvar->setText(menu_option[2]);
+               GLOBAL::WINDOW::ui_PrenferecesWindow->ui()->label_tema->setText(menu_option[3]);
           }
     }
 

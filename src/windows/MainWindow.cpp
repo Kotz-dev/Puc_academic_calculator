@@ -7,8 +7,13 @@
 
 #include "windows/MainWindow.h"
 #include <QDebug>
+#include <ui_AboutDialog.h>
+#include <windows/aboutdialog.h>
+
 #include "ui_MainWindow.h"
 #include "io/FileManager.h"
+
+#define version "v0.0.1"
 
 static bool isGradeOutOfRange(double n1,double n2) {
     if (n1 > 10.0 || n2 > 10.0) {
@@ -58,12 +63,13 @@ void MainWindow::Update_table_data() {
  * - Inicializa as variáveis globais
  */
 void MainWindow::initialize() {
+    ui->label_version->setText(version);
+    GLOBAL::WINDOW::main = this;
     std::unique_ptr<ui_controller> controller_ui = std::make_unique<ui_controller>();
-    ui_controller::applyButtonStyles(TYPE::MAIN_WINDOW,ui);
-    ui_controller::applyTableStyle(ui);
     FileManager::initialize();
     GLOBAL::init_global(ui);
     ui_controller::applyTheme();
+
 }
 /**
 * Função que atualiza as notas na tabela
@@ -71,9 +77,6 @@ void MainWindow::initialize() {
 * a interface atualizada
 */
 void MainWindow::Update() {
-    if (ui != nullptr) {
-        ui_controller::applyTableStyle(ui);
-    }
     Update_table_data();
 }
 /**
@@ -90,10 +93,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         LanguageUI::initialize(GLOBAL::json,this->ui,GLOBAL::idioma);
         UI_FONT::text(GLOBAL::json,ui);
     }
-
-
     system_notas = std::make_shared<GradeSystem>(ui->tableWidget);
-    // system_notas = new GradeSystem(ui->tableWidget);
     this->timer = new QTimer(this);
     timer->setInterval(16);
     connect(timer, SIGNAL(timeout()), this, SLOT(Update()));
@@ -158,9 +158,14 @@ void MainWindow::saveTableData(QString filePath_,SaveMode saveMode) {
     item_list_.clear();
 }
 void MainWindow::on_actionOpition_triggered() {
-        op = new PreferencesWindow(this);
-        op->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
-        op->show();
+
+    if (GLOBAL::WINDOW::ui_PrenferecesWindow != nullptr) {
+        delete GLOBAL::WINDOW::ui_PrenferecesWindow;
+    }
+    window_PreferencesWindow = new PreferencesWindow(this);
+    GLOBAL::WINDOW::ui_PrenferecesWindow = window_PreferencesWindow;
+    window_PreferencesWindow->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    window_PreferencesWindow->show();
 }
 void MainWindow::on_actionSalvar_como_triggered() {
     std::unique_ptr<QFileDialog> fileDialog = std::make_unique<QFileDialog>(this);
@@ -261,7 +266,7 @@ void MainWindow::on_actionAbrir_triggered() {
         qDebug() << e.what();
     }
         if (is_file_aluno == true) {
-             ui->info_arquivo->setText("Arquivo aberto: "+ openFileUrl.fileName());
+             ui->info_arquivo->setText("Aberto: "+ openFileUrl.fileName());
              info_file.filePath = openFileUrl.toLocalFile();
              info_file.isOpen = is_file_open;
         }
@@ -334,4 +339,9 @@ void MainWindow::on_btn_remover_clicked()
      for (auto i : listitem) {
         ui->tableWidget->removeRow(i);
      }
+}
+
+void MainWindow::on_actionSobre_triggered() {
+    AboutDialog *aboutDialog = new AboutDialog(this);
+    aboutDialog->show();
 }

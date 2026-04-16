@@ -11,14 +11,18 @@
 #include <io/FileManager.h>
 #include <QDir>
 
+class MainWindow;
+
 
 namespace GLOBAL {
      extern   QString idioma;
      extern   bool is_aplica;
      extern   bool is_close_window_option;
+     extern    int janela_vez;
      namespace WINDOW {
           extern   Ui::MainWindow * UI;
-          extern PreferencesWindow *_ui_option;
+          extern   MainWindow *main;
+          extern   PreferencesWindow *ui_PrenferecesWindow;
      }
      extern   nlohmann::json json;
 
@@ -27,7 +31,6 @@ namespace GLOBAL {
           inline    QString LANGUAGE;
           inline   QString CONFIG;
      }
-
      extern   void init_global(Ui::MainWindow * windows);
      extern   void init_global(PreferencesWindow * option);
 }

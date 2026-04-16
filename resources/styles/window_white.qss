@@ -1,49 +1,44 @@
 /* ── Janela principal ────────────────────────────────────── */
 QMainWindow {
-    background-color: black;
+    background-color: white;
 }
 
 QWidget#centralwidget {
-    background-color: rgb(30, 30, 30);
+    background-color: white;
 }
 
 /* ── Frames ──────────────────────────────────────────────── */
 QFrame#frame {
-    background-color: rgb(35, 35, 38);
+    background-color: white;
     border: none;
 }
 
 QFrame#frame_2 {
-    background-color: #007acc;
+    background-color: white;
     border: none;
-    border-radius: none;
+    border-radius: 6px;
 }
 /* ── LineEdit ────────────────────────────────────────────── */
 QLineEdit#lineEdit {
-    background-color: none;
-     border-color : #6D6D6D;
-     border-radius : 4px;
-      border-width : 0.5px;
-      border: 0.5px solid #6D6D6D;
-    color: rgb(220, 220, 220);
-    font-size: 13px;
-}
-QLineEdit#lineEdit:hover{
-    background-color:  #666666;
-    border-color : #6D6D6D;
+    background-color: white;
+    border-color : black;
     border-width : 0.5px;
-    border: 0.5px solid #6D6D6D;
-    color: rgb(220, 220, 220);
+    border: 0.5px solid black;
+    color: black;
     font-size: 13px;
 }
 
 /* ── TableWidget ─────────────────────────────────────────── */
 QTableWidget#tableWidget {
-    background-color: #000000;
+    background-color: #FFFFFF;
     color: rgb(220, 220, 220);
     gridline-color: rgb(55, 55, 60);
-    border: none;
-    selection-background-color: rgb(0, 100, 190);
+    border: 1px;
+    border-radius : 1px;
+    border-width : 0.5px;
+    border-color : black;
+    border-style : solid;
+    selection-background-color: white;
     selection-color: rgb(255, 255, 255);
     font-size: 13px;
 }
@@ -51,7 +46,7 @@ QTableWidget#tableWidget {
 QTableWidget#tableWidget::item {
     padding: 0.5px 0.5px;
     border: none;
-    color: white;
+    color: black;
 }
 
 QTableWidget#tableWidget::item:selected {
@@ -62,7 +57,8 @@ QTableWidget#tableWidget::item:selected {
 /* viewport é quem controla o fundo da área vazia */
 QTableWidget#tableWidget QAbstractScrollArea,
 QTableWidget#tableWidget > QWidget > QWidget {
-    background-color: rgb(35, 35, 38);
+    background-color: #CCCCCC;
+    color : black;
 }
 
 QHeaderView {
@@ -178,10 +174,10 @@ QScrollBar::add-page, QScrollBar::sub-page {
 
 /* ── MenuBar ─────────────────────────────────────────────── */
 QMenuBar {
-    background-color: rgb(25, 25, 25);
-    color: rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(50, 50, 55);
-    padding: 2px;
+    background-color: #F0F0F0;
+    color: black;
+    border-bottom: 0px solid black;
+    padding: 1px;
     font-size: 13px;
 }
 
@@ -190,6 +186,8 @@ QMenuBar::item {
     padding: 4px 12px;
     border-radius: 4px;
 }
+
+
 
 QMenuBar::item:selected {
     background-color: rgb(50, 50, 60);
@@ -203,10 +201,10 @@ QMenuBar::item:pressed {
 
 /* ── Menu dropdown ───────────────────────────────────────── */
 QMenu {
-    background-color: rgb(38, 38, 44);
-    color: rgb(210, 210, 210);
-    border: 1px solid rgb(60, 60, 70);
-    border-radius: 6px;
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 8px;
     padding: 4px;
     font-size: 13px;
 }
@@ -232,7 +230,7 @@ QMenu::separator {
 }
 
 QLabel {
-  Color:white;
+  Color:black;
 }
 QFrame#frame {
   background-color : none;

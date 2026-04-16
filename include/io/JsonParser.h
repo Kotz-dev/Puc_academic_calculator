@@ -15,9 +15,16 @@ struct ConfigFileData {
      std::string fonte;
 };
 
+struct file_ {
+     nlohmann::json json;
+     bool isOpen;
+     bool exist;
+};
+
 
 class JsonParser {
 public :
+     static file_ LoadJson(QString filePath);
      static nlohmann::json buildConfigJson(ConfigFileData obj);
      static QString readJsonKeyAsString(QString filePath, QString key);
      static nlohmann::json readJsonKey(QString filePath, QString key);

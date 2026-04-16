@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AboutDialog</class>
+ <widget class="QDialog" name="AboutDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>207</width>
+    <height>156</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>207</width>
+    <height>156</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>207</width>
+    <height>156</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Sobre</string>
+  </property>
+  <widget class="QLabel" name="Github">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>120</y>
+     <width>40</width>
+     <height>10</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>40</width>
+     <height>10</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>GitHub: </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_Github">
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>116</y>
+     <width>114</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#btn_Github {
+    color: rgb(88, 166, 255);
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+}
+#btn_Github:hover {
+    color: rgb(140, 200, 255);   /* azul mais claro no hover */
+}
+#btn_Github:pressed {
+    color: rgb(50, 120, 200);    /* azul mais escuro no pressed */
+}</string>
+   </property>
+   <property name="text">
+    <string>github.com/Kotz-dev</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name_app">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>27</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>EduMetrics</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dev_name">
+   <property name="geometry">
+    <rect>
+     <x>37</x>
+     <y>89</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Desenvolvido por: Kotz-dev</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="version">
+   <property name="geometry">
+    <rect>
+     <x>69</x>
+     <y>70</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Versão: v0.0.1</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

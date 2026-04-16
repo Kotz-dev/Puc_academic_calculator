@@ -37,6 +37,8 @@ private slots:
     void on_actionSalvar_como_triggered();
     void on_actionOpition_triggered();
 
+    void on_actionSobre_triggered();
+
     void initialize ();
     void saveTableData(QString filePath_,SaveMode saveMode);
 private:
@@ -48,7 +50,7 @@ private:
 
     QString patch_load;
     FileStatus info_file;
-    PreferencesWindow *op;
+    PreferencesWindow *window_PreferencesWindow;
     bool is_file_open = false;
 
 };

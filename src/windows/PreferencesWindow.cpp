@@ -32,8 +32,8 @@ void PreferencesWindow::on_Combox_tema_currentIndexChanged(int index) {
 PreferencesWindow::PreferencesWindow(QWidget *parent) : QMainWindow(parent), ui_preferences_window_(new Ui::PreferencesWindow) {
     has_selected_idiom = false;
     has_selected_theme = false;
+    GLOBAL::WINDOW::ui_PrenferecesWindow = this;
     ui_preferences_window_->setupUi(this);
-    GLOBAL::init_global(this);
     ui_controller::applyTheme();
     auto value = GLOBAL::json["Fonte"];
     ui_preferences_window_->fontComboBox->setCurrentFont(QString::fromStdString(nlohmann::to_string(value)));
@@ -143,4 +143,5 @@ void PreferencesWindow::on_btn_salvar_clicked() {
 PreferencesWindow::~PreferencesWindow() {
     delete ui_preferences_window_;
     GLOBAL::is_close_window_option = true;
+    GLOBAL::WINDOW::ui_PrenferecesWindow = nullptr;
 }

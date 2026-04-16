@@ -1,0 +1,190 @@
+/* ── Fundo geral ─────────────────────────────────────────── */
+QMainWindow, QWidget {
+    background-color: white;
+    border: none;
+}
+
+QFrame {
+    background-color: white;
+    border: none;
+}
+
+QFrame#frame_2 {
+    background-color: transparent;
+    border: none;
+}
+
+/* ── Labels ──────────────────────────────────────────────── */
+QLabel {
+    background-color: transparent;
+    color: rgb(30, 30, 30);
+    border: none;
+}
+
+/* ── LineEdit ────────────────────────────────────────────── */
+QLineEdit {
+     background-color: none ;
+     color: white;
+     border-color : #6D6D6D;
+     border-width : 0.5px;
+     border: 0.5px outset #6D6D6D;
+     border-radius: 4px;
+     padding: 2px 4px;
+}
+
+QLineEdit:focus {
+    border: 1px solid rgb(0, 120, 215);
+}
+
+/* ── Campo somente leitura (exibição de fonte) ───────────── */
+#lineEdit {
+    border: none;
+    background-color: transparent;
+    color: rgb(30, 30, 30);
+}
+
+/* ── QFontComboBox: fundo interno branco ─────────────────── */
+QFontComboBox QLineEdit {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: rgb(30, 30, 30);
+}
+
+/* ── ComboBox / FontComboBox ─────────────────────────────── */
+QComboBox, QFontComboBox {
+    background-color: rgb(255, 255, 255);
+    color: rgb(30, 30, 30);
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 4px;
+    padding: 2px 4px;
+    selection-background-color: rgb(0, 120, 215);
+}
+
+QComboBox:hover, QFontComboBox:hover {
+    border: 1px solid rgb(0, 120, 215);
+}
+
+QComboBox::drop-down, QFontComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow, QFontComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid rgb(80, 80, 80);
+    width: 0;
+    height: 0;
+    margin-right: 4px;
+}
+
+QComboBox QAbstractItemView, QFontComboBox QAbstractItemView {
+    background-color: rgb(255, 255, 255);
+    color: rgb(30, 30, 30);
+    border: 1px solid rgb(180, 180, 180);
+    selection-background-color: rgb(0, 120, 215);
+    selection-color: rgb(255, 255, 255);
+    outline: none;
+}
+
+#lineEdit {
+ color : none;
+}
+
+/* ── Botão Aplicar ───────────────────────────────────────── */
+#btn_aplicar {
+    background-color: rgb(70, 70, 80);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 6px 16px;
+    font-weight: bold;
+    font-size: 13px;
+}
+#btn_aplicar:hover {
+    background-color: rgb(50, 50, 60);
+}
+#btn_aplicar:pressed {
+    background-color: rgb(20, 20, 25);
+}
+
+/* ── Botão Salvar ────────────────────────────────────────── */
+#btn_salvar {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(30, 210, 30), stop:1 rgb(10, 160, 10));
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 6px 16px;
+    font-weight: bold;
+    font-size: 13px;
+}
+#btn_salvar:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(20, 180, 20), stop:1 rgb(5, 130, 5));
+}
+#btn_salvar:pressed {
+    background-color: rgb(2, 80, 2);
+}
+
+/* ── Botão Procurar ──────────────────────────────────────── */
+#btn_search_paste {
+    background-color: rgb(94, 92, 100);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 4px 12px;
+}
+#btn_search_paste:hover {
+    background-color: rgb(36, 31, 49);
+}
+#btn_search_paste:pressed {
+    background-color: rgb(0, 0, 0);
+}
+/* ── QFontComboBox dropdown refinado ─────────────────────── */
+QFontComboBox QAbstractItemView {
+     background-color: rgb(240, 240, 240);
+    color: rgb(30, 30, 30);
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 4px;
+    padding: 2px;
+    outline: none;
+}
+QFontComboBox QAbstractItemView::item {
+    height: 24px;
+    padding-left: 6px;
+    border-radius: 3px;
+}
+
+QFontComboBox QAbstractItemView::item:hover {
+    background-color: rgb(70, 70, 85);
+    color: rgb(255, 255, 255);
+}
+
+QFontComboBox QAbstractItemView::item:selected {
+    background-color: rgb(0, 120, 215);
+    color: rgb(255, 255, 255);
+}
+
+/* ── Scrollbar do dropdown ───────────────────────────────── */
+QFontComboBox QAbstractScrollArea QScrollBar:vertical {
+    background-color: rgb(45, 45, 45);
+    width: 8px;
+    border: none;
+}
+
+QFontComboBox QAbstractScrollArea QScrollBar::handle:vertical {
+    background-color: rgb(100, 100, 110);
+    border-radius: 4px;
+    min-height: 20px;
+}
+
+QFontComboBox QAbstractScrollArea QScrollBar::handle:vertical:hover {
+    background-color: rgb(130, 130, 145);
+}
+
+QFontComboBox QAbstractScrollArea QScrollBar::add-line:vertical,
+QFontComboBox QAbstractScrollArea QScrollBar::sub-line:vertical {
+    height: 0px;
+}

@@ -56,6 +56,7 @@ add_executable(PucSimulator
         # UI/QRC
         ${CMAKE_SOURCE_DIR}/forms/MainWindow.ui
         ${CMAKE_SOURCE_DIR}/forms/option.ui
+        ${CMAKE_SOURCE_DIR}/forms/aboutdialog.ui
         ${CMAKE_SOURCE_DIR}/resources/resources.qrc
 
         # Entry point
@@ -89,6 +90,9 @@ add_executable(PucSimulator
         # Utils
         src/utils/GlobalAccess.cpp
         include/utils/GlobalAccess.h
+        src/windows/aboutdialog.cpp
+        include/windows/aboutdialog.h
+        forms/aboutdialog.ui
 )
 
 # -------------------------

@@ -86,15 +86,7 @@ void FileManager::initialize() {
 
 
 bool FileManager::isJsonFileEmpty(QString path) {
-     QFile file(path);
-     file.open(QFile::ReadOnly | QFile::Text);
-     nlohmann::json json = {};
-    try {
-        json = nlohmann::json::parse(file.readAll().toStdString());
-    }catch (nlohmann::json::exception & e) {
-        return true;
-    }
-     return false;
+    return JsonParser::LoadJson(path).json.empty();
 }
 
 bool isFile (std::fstream & file) {
@@ -105,24 +97,15 @@ bool isFile (std::fstream & file) {
     if (file.fail()) {
         return false;
     }
+    return false;
 }
 
 bool FileManager::Load(QString path,Json & get_json) {
-    if (path.isEmpty() == true) {
-        return false;
+    if (!path.isEmpty() && std::filesystem::exists(path.toStdString())) {
+        get_json = JsonParser::LoadJson(path).json;
+        return true;
     }
-    QFile file(path);
-    if (file.exists() == false) {
-        return false;
-    }
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    try {
-        get_json = nlohmann::json::parse(file.readAll().toStdString());
-
-    }catch (nlohmann::json::exception & e) {
-        qDebug() << QObject::tr("Error reading file %1").arg(path);
-    }
-    return true;
+    return false;
 }
 
 bool FileManager::Load(const QString path,Json & get_json,bool & is_open) {
@@ -130,18 +113,15 @@ bool FileManager::Load(const QString path,Json & get_json,bool & is_open) {
     if (path.isEmpty() == true) {
         return false;
     }
-      QFile file(path);
-      file.open(QFile::ReadWrite | QFile::WriteOnly  | QFile::Text);
-      is_open = file.isOpen();
-      get_json = nlohmann::json::parse(file.readAll().toStdString());
+      file_ file =  JsonParser::LoadJson(path);
+      get_json = file.json;
+      is_open = file.isOpen;
       return true;
 }
 
 FileStatus FileManager::checkFileStatus(QString path) {
     QFile file(path);
-    bool is_open = file.open(QFile::Text | QFile::ReadOnly);
-    FileStatus obj = {is_open, path};
-    return obj;
+    return {file.open(QFile::Text | QFile::ReadOnly), path};
 }
 bool FileManager::save(QString path, std::variant<item_vector_array, ApplicationConfig> obj) {
     if (path.isEmpty() == true) {

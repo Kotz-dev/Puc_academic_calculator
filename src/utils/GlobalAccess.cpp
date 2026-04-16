@@ -9,9 +9,11 @@ namespace GLOBAL {
     QString idioma;
     bool is_aplica;
     bool is_close_window_option;
+    int janela_vez;
     namespace WINDOW {
         Ui::MainWindow * UI;
-        PreferencesWindow *_ui_option;
+        PreferencesWindow *ui_PrenferecesWindow;
+        MainWindow *main;
     }
     nlohmann::json json;
     void init_global(Ui::MainWindow * windows) {
@@ -21,7 +23,7 @@ namespace GLOBAL {
     }
     void init_global( PreferencesWindow * option) {
         if (option != nullptr) {
-            WINDOW::_ui_option = option;
+            WINDOW::ui_PrenferecesWindow = option;
         }
     }
 }

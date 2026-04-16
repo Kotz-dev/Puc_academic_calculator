@@ -3,6 +3,7 @@
 //
 
 #include "managers/UIManager.h"
+#include "windows/MainWindow.h"
 #include "GlobalAccess.h"
 #include "JsonParser.h"
 
@@ -49,65 +50,40 @@ void Style_Table::Style::clearCell(QTableWidget *table, int row, int column) {
 void ui_controller::applyTheme(QString themeName) {
 
     if (themeName == "Claro") {
-        applyLightTheme(GLOBAL::WINDOW::UI,GLOBAL::WINDOW::_ui_option);
+        applyLightTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
     }
     if (themeName == "Escuro") {
-        applyDarkTheme(GLOBAL::WINDOW::UI,GLOBAL::WINDOW::_ui_option);
+        applyDarkTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
     }
 }
 
 void ui_controller::applyTheme() {
+
+    qDebug () << bool(GLOBAL::WINDOW::ui_PrenferecesWindow != nullptr);
     if ((JsonParser::readJsonKey(GLOBAL::FILE_PATHS::CONFIG,"tema") == "Claro")) {
-       applyLightTheme(GLOBAL::WINDOW::UI,GLOBAL::WINDOW::_ui_option);
+        qDebug () << "Claro";
+       applyLightTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
     }
     if ((JsonParser::readJsonKey(GLOBAL::FILE_PATHS::CONFIG,"tema") == "Escuro")) {
-        applyDarkTheme(GLOBAL::WINDOW::UI,GLOBAL::WINDOW::_ui_option);
+        qDebug () << "Escuro";
+        applyDarkTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
     }
 }
-void ui_controller::applyLightTheme(Ui_MainWindow *ui,PreferencesWindow *op) {
-    if (ui != nullptr && op != nullptr) {
-           op->setStyleSheet(gets("PreferencesWindowStyles.qss"));
-           op->ui()->btn_salvar->setStyleSheet(gets("button_save.qss"));
-           op->ui()->btn_aplicar->setStyleSheet(gets("button_default.qss"));
-          op->ui()->btn_search_paste->setStyleSheet(gets("button_default.qss"));
+void ui_controller::applyLightTheme(MainWindow *ui,PreferencesWindow *op) {
+    if (ui != nullptr ) {
+        ui->setStyleSheet(gets("window_white.qss"));
+    }
+    if (op != nullptr) {
+         op->setStyleSheet(gets("PreferencesWindowStyles_white.qss"));
     }
 }
-void ui_controller::applyTableStyle(Ui_MainWindow *ui) {
-    QFile filew(ui_styles_tabel_widget);
-    if (ui != nullptr) {
-        filew.open(QFile::ReadOnly);
-        QString styleSheet = filew.readAll();
-        ui->tableWidget->setStyleSheet(styleSheet);
+void ui_controller::applyDarkTheme(MainWindow *ui,PreferencesWindow *Prefe) {
+    if (ui != nullptr ) {
+        ui->setStyleSheet(gets("window_dark.qss"));
     }
-}
-
-void ui_controller::applyDarkTheme(Ui_MainWindow *ui,PreferencesWindow *Prefe) {
-
-    QFile filew(window_dark);
-    if (ui != nullptr && Prefe != nullptr) {
-        if (filew.open(QFile::ReadOnly)) {}
-        QString styleSheet = filew.readAll();
-        ui->menuBar->setStyleSheet("");
-        ui->frame->setStyleSheet("");
-        ui->centralwidget->setStyleSheet("");
+    if (Prefe != nullptr) {
+        Prefe->setStyleSheet(gets("PreferencesWindowStyles_dark.qss"));
     }
-}
-
-void ui_controller::applyButtonStyles(TYPE TY,Ui_MainWindow * ui) {
-    QFile filew(ui_styles_);
-
-
-   if (TY == TYPE::MAIN_WINDOW) {
-       if (filew.open(QFile::ReadOnly)) {
-           QString styleSheet = filew.readAll();
-           ui->logo->setStyleSheet(styleSheet);
-           ui->btn_add->setStyleSheet(styleSheet);
-           ui->btn_remover->setStyleSheet(styleSheet);
-           filew.close();
-       } else {
-           qDebug() << "Erro ao abrir o arquivo de estilo:" << filew.errorString();
-       }
-   }
 }
 void UI_FONT::text(QString fonte,Ui::PreferencesWindow * ui,Ui_MainWindow *win) {
      if (ui == nullptr) {

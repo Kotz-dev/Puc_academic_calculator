@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1095</width>
+    <width>1084</width>
     <height>589</height>
    </rect>
   </property>
@@ -22,13 +22,28 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>PUC academic calculator</string>
+   <string>EduMetrics</string>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::TabShape::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item alignment="Qt::AlignmentFlag::AlignLeft">
      <widget class="QFrame" name="frame">
       <property name="frameShape">
@@ -97,7 +112,7 @@
        <string notr="true"/>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
+       <enum>QFrame::Shape::WinPanel</enum>
       </property>
       <property name="lineWidth">
        <number>2</number>
@@ -112,7 +127,7 @@
        <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
       </property>
       <property name="gridStyle">
-       <enum>Qt::PenStyle::NoPen</enum>
+       <enum>Qt::PenStyle::SolidLine</enum>
       </property>
       <property name="cornerButtonEnabled">
        <bool>false</bool>
@@ -176,7 +191,7 @@
       </column>
      </widget>
     </item>
-    <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter">
+    <item>
      <widget class="QFrame" name="frame_2">
       <property name="frameShape">
        <enum>QFrame::Shape::NoFrame</enum>
@@ -195,12 +210,24 @@
          <property name="text">
           <string>AI</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit">
-         <property name="styleSheet">
-          <string notr="true">border-radius : 40px;</string>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="maxLength">
+          <number>3</number>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -214,7 +241,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>700</width>
+           <width>1200</width>
            <height>20</height>
           </size>
          </property>
@@ -222,13 +249,28 @@
        </item>
        <item>
         <widget class="QLabel" name="info_arquivo">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item alignment="Qt::AlignmentFlag::AlignLeft">
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -236,7 +278,17 @@
           <enum>Qt::TextFormat::RichText</enum>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_version">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -250,8 +302,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1095</width>
-     <height>20</height>
+     <width>1084</width>
+     <height>19</height>
     </rect>
    </property>
    <property name="font">
@@ -274,8 +326,15 @@
     </property>
     <addaction name="actionOpition"/>
    </widget>
+   <widget class="QMenu" name="menuAjuda">
+    <property name="title">
+     <string>Ajuda</string>
+    </property>
+    <addaction name="actionSobre"/>
+   </widget>
    <addaction name="menuArquivos"/>
    <addaction name="menuFerramentas"/>
+   <addaction name="menuAjuda"/>
   </widget>
   <action name="actionAbrir">
    <property name="text">
@@ -305,6 +364,11 @@
   <action name="actionOpition">
    <property name="text">
     <string>opções</string>
+   </property>
+  </action>
+  <action name="actionSobre">
+   <property name="text">
+    <string>Sobre</string>
    </property>
   </action>
  </widget>

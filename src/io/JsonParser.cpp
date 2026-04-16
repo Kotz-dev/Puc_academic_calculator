@@ -19,16 +19,13 @@ void JsonParser::removeQuotes(QString  & str) {
     }
 }
 
-bool JsonParser::writeJsonKey(QString pathc,std::string key,std::string value) {
-    if (pathc.isEmpty() == false) {
-        QFile filew{pathc};
-        filew.open(QFile::ReadOnly | QFile::Text | QFile::WriteOnly);
-        nlohmann::json json = nlohmann::json::parse(filew.readAll().toStdString());
+bool JsonParser::writeJsonKey(QString filePath,std::string key,std::string value) {
+    if (filePath.isEmpty() == false) {
+        nlohmann::json json = LoadJson(filePath).json;
         json[key] = value;
-        std::ofstream outFile(pathc.toStdString());
+        std::ofstream outFile(filePath.toStdString());
         outFile << std::setw(2) << json << std::endl;
         outFile.close();
-        filew.close();
         return true;
     }
     return false;
@@ -47,31 +44,24 @@ nlohmann::json JsonParser::buildConfigJson(ConfigFileData obj) {
 
 
 QString JsonParser::readJsonKeyAsString(QString patch, QString key) {
-    nlohmann::json json;
-    QString get;
-    QFile filew{patch};
-    filew.open(QFile::ReadOnly | QFile::Text);
-    try {
-        json = nlohmann::json::parse(filew.readAll().toStdString());
-    }catch (nlohmann::json::exception & e) {
-        qDebug () << e.what();
-        return "Error";
-    }
-    get = QString::fromStdString(json[key.toStdString()]).remove("'").remove("\\");
-    return get;
+    return QString::fromStdString(LoadJson(patch).json[key.toStdString()]).remove("'").remove("\\");;
 }
-nlohmann::json JsonParser::readJsonKey(QString Patch, QString key) {
-    nlohmann::json json;
-    QFile filew{Patch};
-    filew.open(QFile::ReadOnly | QFile::Text);
-    try {
-        json = nlohmann::json::parse(filew.readAll().toStdString());
-    }catch (nlohmann::json::exception & e) {
-        qDebug () << e.what();
-        return nlohmann::json {};
-    }
-    return json[key.toStdString()];
-}
-JsonParser::JsonParser() {
 
+file_ JsonParser::LoadJson(QString filePath) {
+    QFile filew{filePath};;
+    nlohmann::json json = {};
+    bool exist = filew.exists();
+    bool is_open = filew.open(QFile::ReadOnly | QFile::Text | QFile::WriteOnly);
+    try {
+        json = nlohmann::json::parse(filew.readAll().toStdString());
+    }catch (nlohmann::json::exception & e) {
+        qDebug () << e.what();
+        return file_{json,false};
+    }
+    return file_{json,is_open,exist};
 }
+
+nlohmann::json JsonParser::readJsonKey(QString Patch, QString key) {
+    return LoadJson(Patch).json[key.toStdString()];
+}
+JsonParser::JsonParser() {}

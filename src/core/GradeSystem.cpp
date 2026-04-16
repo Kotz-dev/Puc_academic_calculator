@@ -61,7 +61,6 @@ void GradeSystem::setGradeData(int plannedClasses, int taughtClasses, int attend
 
     this->N1 = n1;
     this->N2 = n2;
-
     this->IA = IA;
 }
 
