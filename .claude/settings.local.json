@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find C:UsersKoTzCLionProjectsPuc_academic_calculator -type f \\\\\\(-name *.cpp -o -name *.h -o -name *.ui -o -name CMakeLists.txt -o -name *.cmake \\\\\\))"
+    ]
+  }
+}
