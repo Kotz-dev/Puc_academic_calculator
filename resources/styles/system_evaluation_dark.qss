@@ -1,0 +1,82 @@
+/* ── Widget ─────────────────────────────── */
+QMainWindow, QWidget {
+    background-color: rgb(30, 30, 30);
+    border: none;
+}
+QFrame#frame {
+ background-color : #202020;
+ border-bottom: 2px solid #333333;
+}
+QFrame#frame_4 {
+ background-color : #141414;
+ border-top: 2px solid #333333;
+}
+
+
+QFrame#frame_5 {
+ background-color : #111111;
+ border-radius : 4px;
+ border: 2px solid #333333;
+}
+
+/* ── Botão ─────────────────────────────── */
+#btn_apply_system {
+  background-color: #1e7bc4;
+border-radius : 0px;
+color: rgb(255, 255, 255);
+ border: 1px solid #2f8fd8;
+}
+#btn_apply_system:hover {
+   background-color: #14629F;
+ border-radius : 0px;
+ color: rgb(255, 255, 255);
+  border: 2px solid #2f8fd8;
+}
+
+#btn_cancel {
+  background-color: #303030;
+  border-radius: 0px;
+  border: 2px solid #333333;
+}
+
+/* ───────────────────────────────── */
+
+#label_8 {
+  background-color : none;
+  color : #aaaaaa;
+}
+QLabel#label_aprovado {
+  background-color:#22c55e;
+  border-radius : 100px;
+}
+
+QDoubleSpinBox {
+  background-color : #0d0d0d;
+  border-radius : 1px;
+    border: 2px solid #333333;
+}
+QLineEdit {
+   background-color : #0d0d0d;
+    border-radius : 1px;
+      border: 2px solid #333333;
+}
+
+#list_faculdade {
+ background-color : #111111;
+}
+#list_faculdade:item {
+ background-color : none;
+ border-top: 1px solid #333333;
+ color : white;
+}
+#list_faculdade::item:hover {
+  background-color : #0e3a5f;
+  border-radius : 0px;
+}
+#list_faculdade::item:selected {
+ background-color : #052846;
+}
+#list_faculdade::item::pressed {
+  background-color : #052846;
+  border-radius : 0px;
+}

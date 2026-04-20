@@ -325,6 +325,8 @@
      <string>Ferramentas</string>
     </property>
     <addaction name="actionOpition"/>
+    <addaction name="separator"/>
+    <addaction name="actionSdeAvaliacao"/>
    </widget>
    <widget class="QMenu" name="menuAjuda">
     <property name="title">
@@ -369,6 +371,11 @@
   <action name="actionSobre">
    <property name="text">
     <string>Sobre</string>
+   </property>
+  </action>
+  <action name="actionSdeAvaliacao">
+   <property name="text">
+    <string>Sistema de Avaliação...</string>
    </property>
   </action>
  </widget>

@@ -20,5 +20,5 @@ AboutDialog::~AboutDialog() {
 }
 
 void AboutDialog::on_btn_Github_clicked() {
-    QDesktopServices::openUrl(QUrl("https://github.com/Kotz-dev"));
+    QDesktopServices::openUrl(QUrl("https://github.com/Kotz-dev/EduMetrics"));
 }

@@ -37,6 +37,8 @@ private slots:
     void on_actionSalvar_como_triggered();
     void on_actionOpition_triggered();
 
+    void on_actionSdeAvaliacao_triggered();
+
     void on_actionSobre_triggered();
 
     void initialize ();

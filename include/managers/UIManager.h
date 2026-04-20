@@ -20,13 +20,14 @@ static std::filesystem::path window_dark               = std::filesystem::curren
 static std::filesystem::path window_light             = std::filesystem::current_path().remove_filename() / "resources/styles/window_white.qss";
 static std::filesystem::path _PreferencesWindow_      = std::filesystem::current_path().remove_filename() / "resources/styles/PreferencesWindowStyles_white.qss";
 static std::filesystem::path _PreferencesWindow_dark  = std::filesystem::current_path().remove_filename() / "resources/styles/PreferencesWindowStyles_dark.qss";
-
+static std::filesystem::path systemEvaluation_dark = std::filesystem::current_path().remove_filename() / "resources/styles/system_evaluation_dark.qss";
 const std::array<std::filesystem::path, 8> style_sheet_paths =
     {
     window_dark,
     window_light,
     _PreferencesWindow_,
-    _PreferencesWindow_dark
+    _PreferencesWindow_dark,
+    systemEvaluation_dark
     };
 
 

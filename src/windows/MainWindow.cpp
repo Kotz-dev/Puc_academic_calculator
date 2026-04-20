@@ -13,6 +13,8 @@
 #include "ui_MainWindow.h"
 #include "io/FileManager.h"
 
+#include <windows/system_evaluation.h>
+
 #define version "v0.0.1"
 
 static bool isGradeOutOfRange(double n1,double n2) {
@@ -344,4 +346,11 @@ void MainWindow::on_btn_remover_clicked()
 void MainWindow::on_actionSobre_triggered() {
     AboutDialog *aboutDialog = new AboutDialog(this);
     aboutDialog->show();
+}
+
+void MainWindow::on_actionSdeAvaliacao_triggered() {
+   evaluation_system *janela = new evaluation_system(this);
+    janela->setWindowModality(Qt::WindowModal);
+    janela->setWindowFlags(Qt::Window| Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
+   janela->show();
 }

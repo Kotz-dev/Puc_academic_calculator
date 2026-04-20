@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="img">
+    <file>images/Logo_PUC.png</file>
     <file>images/EduMetrics_logo.png</file>
     <file>images/EduMetrics_logo_sem_fundo.png</file>
     <file>images/btn_remove_hover.png</file>
@@ -8,5 +9,8 @@
     <file>images/btn_add_hover.png</file>
     <file>images/btn_add_pressed.png</file>
     <file>images/btn_add_normal.png</file>
+  </qresource>
+  <qresource prefix="Icons">
+    <file>images/Logo_PUC.ico</file>
   </qresource>
 </RCC>

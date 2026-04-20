@@ -58,6 +58,7 @@ add_executable(PucSimulator
         ${CMAKE_SOURCE_DIR}/forms/option.ui
         ${CMAKE_SOURCE_DIR}/forms/aboutdialog.ui
         ${CMAKE_SOURCE_DIR}/resources/resources.qrc
+        ${CMAKE_SOURCE_DIR}/forms/system_evaluation.ui
 
         # Entry point
         src/main.cpp
@@ -86,6 +87,8 @@ add_executable(PucSimulator
         include/windows/MainWindow.h
         src/windows/PreferencesWindow.cpp
         include/windows/PreferencesWindow.h
+        src/windows/system_evaluation.cpp
+        include/windows/system_evaluation.h
 
         # Utils
         src/utils/GlobalAccess.cpp
