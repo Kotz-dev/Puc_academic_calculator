@@ -46,7 +46,7 @@ color: rgb(255, 255, 255);
   color : #aaaaaa;
 }
 QLabel#label_aprovado {
-  background-color:#22c55e;
+  /*background-color:#22c55e;*/
   border-radius : 100px;
 }
 

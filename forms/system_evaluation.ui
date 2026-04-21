@@ -222,7 +222,7 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>190</x>
         <y>100</y>
         <width>143</width>
         <height>56</height>
@@ -254,7 +254,7 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>330</x>
         <y>100</y>
         <width>154</width>
         <height>56</height>
@@ -338,9 +338,6 @@
          </property>
          <property name="text">
           <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="../resources/resources.qrc">:/img/images/Logo_PUC.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>

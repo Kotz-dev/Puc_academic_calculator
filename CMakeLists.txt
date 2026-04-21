@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.31)
-project(PucSimulator)
+project(EduMetrics)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
@@ -52,7 +52,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS
 # -------------------------
 # Executável
 # -------------------------
-add_executable(PucSimulator
+add_executable(EduMetrics
         # UI/QRC
         ${CMAKE_SOURCE_DIR}/forms/MainWindow.ui
         ${CMAKE_SOURCE_DIR}/forms/option.ui
@@ -96,13 +96,17 @@ add_executable(PucSimulator
         src/windows/aboutdialog.cpp
         include/windows/aboutdialog.h
         forms/aboutdialog.ui
+        src/data/item_system_evaluation.cpp
+        include/data/item_system_evaluation.h
+        src/io/PatchImagem.cpp
+        include/io/PatchImagem.h
 )
 
 # -------------------------
 # Linkagem
 # -------------------------
 
-target_link_libraries(PucSimulator PRIVATE
+target_link_libraries(EduMetrics PRIVATE
         Qt::Core
         Qt::Gui
         Qt::Widgets
@@ -113,14 +117,14 @@ target_link_libraries(PucSimulator PRIVATE
 # Linux
 if(UNIX AND NOT APPLE)
 
-    set_target_properties(${PROJECT_NAME} PROPERTIES
-            INSTALL_RPATH "$ORIGIN;/home/kotz/Qt/6.11.0/gcc_64/lib"
-            BUILD_WITH_INSTALL_RPATH TRUE
-    )
-
     get_target_property(QT_CORE_LOCATION Qt6::Core LOCATION)
     get_filename_component(QT_INSTALL_PATH "${QT_CORE_LOCATION}" DIRECTORY)
     get_filename_component(QT_INSTALL_PATH "${QT_INSTALL_PATH}/.." ABSOLUTE)
+
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+            INSTALL_RPATH "$ORIGIN;${QT_INSTALL_PATH}/lib"
+            BUILD_WITH_INSTALL_RPATH TRUE
+    )
 
     if(EXISTS "${QT_INSTALL_PATH}/plugins/platforms/libqxcb.so")
         add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

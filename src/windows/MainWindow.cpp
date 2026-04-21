@@ -167,6 +167,7 @@ void MainWindow::on_actionOpition_triggered() {
     window_PreferencesWindow = new PreferencesWindow(this);
     GLOBAL::WINDOW::ui_PrenferecesWindow = window_PreferencesWindow;
     window_PreferencesWindow->setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
+    window_PreferencesWindow->setWindowModality(Qt::WindowModal);
     window_PreferencesWindow->show();
 }
 void MainWindow::on_actionSalvar_como_triggered() {

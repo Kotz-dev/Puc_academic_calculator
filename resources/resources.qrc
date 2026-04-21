@@ -9,6 +9,8 @@
     <file>images/btn_add_hover.png</file>
     <file>images/btn_add_pressed.png</file>
     <file>images/btn_add_normal.png</file>
+    <file>images/Logo_UNIV.png</file>
+    <file>images/Logo_personalizado.png</file>
   </qresource>
   <qresource prefix="Icons">
     <file>images/Logo_PUC.ico</file>

@@ -12,7 +12,7 @@
             </PerProfileState>
           </value>
         </entry>
-        <entry key="Debug-Visual Studio-event-trace">
+        <entry key="Release-Visual Studio">
           <value>
             <PerProfileState>
               <option name="myQmlPath" value="$PROJECT_DIR$/../../../../Qt/6.9.1/msvc2022_64/qml" />

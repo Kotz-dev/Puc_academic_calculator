@@ -7,29 +7,57 @@
 #include "system_evaluation.h"
 #include "ui_system_evaluation.h"
 #include <io/FileManager.h>
-
+#include <item_system_evaluation.h>
 #include "UIManager.h"
 
 
-void init(Ui::evaluation_system *ui) {
-    if (ui != nullptr) {
-        std::array<QString,3> list = {"PUC",
-            "UNIVERSO",
-            "Personalizado"
-        };
 
+
+QString converter (std::filesystem::path path) {
+    return QString::fromStdString(path.string());
+}
+
+enum UNIVERSIDADE {
+    PUC = 0,
+    UNIVERSO = 1,
+    PERSONALIZADO = 2
+};
+
+QString indexImage(UNIVERSIDADE Un) {
+     std::vector<std::filesystem::path> list = {"Logo_PUC.png","Logo_UNIV.png","Logo_personalizado.png"};
+    return converter(PatchImagem::path_(list[Un].string(),FILE_IMAGE));
+}
+
+void evaluation_system::inilizacao_list_ () {
+    if (ui->list_faculdade->currentRow() == 1) {
+        ui->list_faculdade->clear();
+    }
+}
+
+
+void init(Ui::evaluation_system *ui) {
+
+    if (ui != nullptr) {
+        std::array<ITEM,3> list =
+            {
+               ITEM{indexImage(PUC),"PUC","PUC (Pontifícia Universidade Católica)"},
+               ITEM{indexImage(UNIVERSO),"UNIVERSO","UNIVERSO"},
+               ITEM{indexImage(PERSONALIZADO),"Personlizado","Perzolizado"},
+            };
         for (auto & i : list) {
-            QPixmap imagem("C:\\Users\\KoTz\\CLionProjects\\Puc_academic_calculator\\resources\\images\\Logo_PUC.png");
+             QPixmap imagem(i.getLogoUniversidade());
             imagem.scaled(QSize(30,30));
             QIcon icon(imagem);
-            QListWidgetItem *ts = new QListWidgetItem(icon,i);
+            QListWidgetItem *ts = new QListWidgetItem(icon,i.getListNomeUniversidade());
             ts->setSizeHint(QSize(50,50));
+            ui->logo_a2->setPixmap(indexImage(PUC));
             ui->list_faculdade->setSpacing(1);
             ui->list_faculdade->setIconSize(QSize(40,40));
             ui->list_faculdade->addItem(ts);
             ui->list_faculdade->setFocusPolicy(Qt::NoFocus);
         }
     }
+
     ui->list_faculdade->setCurrentItem(ui->list_faculdade->item(0));
 }
 

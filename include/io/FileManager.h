@@ -82,4 +82,5 @@ public :
     static bool save( QString filePath, std::variant<item_vector_array, ApplicationConfig> dataObject);
     FileManager();
 };
+
 #endif //FILEMANGER_H
