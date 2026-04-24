@@ -8,6 +8,35 @@
 
 
 
+QString loadStyleSheet (std::string name ) {
+    QString styleSheet;
+    for (auto & i : style_sheet_paths) {
+        if (i.string().find(name) != std::string::npos) {
+            QFile f(i);
+            f.open(QFile::ReadOnly);
+            styleSheet = f.readAll();
+        }
+    }
+    return styleSheet;
+}
+cnd FileManager::getResourcePath(std::string name,PATCH_TYPE_ type) {
+
+    std::string Path = "";
+    if (type == FILE_styles) {
+        Path = "resources/styles/";
+    }
+    if (type == FILE_IMAGE) {
+        Path = "resources/images/";
+    }
+    if (type == FILE_IDIOMA_) {
+        Path = "resources/i18n/";
+    }
+    std::filesystem::path get = std::filesystem::current_path().remove_filename() / Path / name;
+    return cnd{get,QString::fromStdString(get)};
+}
+
+
+
 enum OS {
     LINUX = 1,
     WINDOWS = -1
@@ -29,7 +58,6 @@ FileSystemInfo FileManager::resolveFilePaths(FileType type) {
         }
         if (FileType::FILE_IDIOMA == type)  {
             Cfile.file_idioma = "/home/" + QDir::home().dirName().toStdString() + "/CLionProjects/EduMetrics/resources/i18n/idioma.ivx";
-           qDebug () << Cfile.file_idioma;
         }
     }
     if (getOperatingSystem() == OS::WINDOWS) {

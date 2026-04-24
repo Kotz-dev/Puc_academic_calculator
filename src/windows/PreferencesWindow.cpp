@@ -34,7 +34,7 @@ PreferencesWindow::PreferencesWindow(QWidget *parent) : QMainWindow(parent), ui_
     has_selected_theme = false;
     GLOBAL::WINDOW::ui_PrenferecesWindow = this;
     ui_preferences_window_->setupUi(this);
-    ui_controller::applyTheme();
+    ui_styles_::applyTheme();
     auto value = GLOBAL::json["Fonte"];
     ui_preferences_window_->fontComboBox->setCurrentFont(QString::fromStdString(nlohmann::to_string(value)));
     ui_preferences_window_->Combox_tema->setCurrentText(JsonParser::readJsonKeyAsString(GLOBAL::FILE_PATHS::CONFIG,"tema"));
@@ -91,9 +91,8 @@ void PreferencesWindow::on_btn_search_paste_clicked() {
     }
      set_setting(text[2],text[0],text[1]);
     LanguageUI::applyLanguage(text[0]);
-
-    UI_FONT::text(text[1],ui_preferences_window_,GLOBAL::WINDOW::UI);
-    ui_controller::applyTheme(text[2]);
+   // UI_FONT::text(text[1],ui_preferences_window_,GLOBAL::WINDOW::UI);
+    ui_styles_::applyTheme(text[2]);
     if (json_array.empty() == false) {
         json_array.clear();
     }
@@ -120,7 +119,7 @@ void PreferencesWindow::on_btn_aplicar_clicked() {
           .remove(""));
     }
     if (has_selected_theme == true) {
-        ui_controller::applyTheme(ui_preferences_window_->Combox_tema->currentText());
+        ui_styles_::applyTheme(ui_preferences_window_->Combox_tema->currentText());
     }
      has_selected_idiom = false;
      has_selected_theme = false;

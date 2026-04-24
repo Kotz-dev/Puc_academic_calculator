@@ -67,10 +67,10 @@ void MainWindow::Update_table_data() {
 void MainWindow::initialize() {
     ui->label_version->setText(version);
     GLOBAL::WINDOW::main = this;
-    std::unique_ptr<ui_controller> controller_ui = std::make_unique<ui_controller>();
+    std::unique_ptr<ui_styles_> controller_ui = std::make_unique<ui_styles_>();
     FileManager::initialize();
     GLOBAL::init_global(ui);
-    ui_controller::applyTheme();
+    ui_styles_::applyTheme();
 
 }
 /**

@@ -5,6 +5,8 @@
 #include "utils/GlobalAccess.h"
 
 
+
+
 namespace GLOBAL {
     QString idioma;
     bool is_aplica;

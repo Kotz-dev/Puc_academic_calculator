@@ -16,6 +16,7 @@
 
 typedef std::vector<StudentRecord> item_vector_array;
 
+// configuracao padrão
 struct ApplicationConfig {
     QString language;
     QString appVersion;
@@ -41,11 +42,19 @@ enum FileType {
     FILE_Desgin = 0x147
 
 };
+
+enum PATCH_TYPE_ {
+    FILE_styles = 0,
+    FILE_IMAGE = 1,
+    FILE_IDIOMA_ = 2
+};
+
 struct FileSystemInfo {
     std::filesystem::path file_;
     std::filesystem::path file_idioma;
     bool exist;
 };
+QString loadStyleSheet (std::string name );
 
 inline int getOperatingSystem () {
 #ifdef __linux__
@@ -67,6 +76,14 @@ struct  FileStatus {
      bool isOpen   = false;
      QString filePath = "";
 };
+
+struct cnd {
+public :
+    std::filesystem::path ToFileSystemPath;
+    QString To_String_;
+};
+
+
 class FileManager {
 private :
     QFile file;
@@ -80,7 +97,15 @@ public :
     static bool Load( QString filePath, Json &jsonOutput);
     static bool Load( QString filePath, nlohmann::json &jsonOutput, bool &isOpen);
     static bool save( QString filePath, std::variant<item_vector_array, ApplicationConfig> dataObject);
+    static cnd getResourcePath (std::string name,PATCH_TYPE_ type);
     FileManager();
 };
-
+const std::array<std::filesystem::path, 8> style_sheet_paths =
+{
+    FileManager::getResourcePath("window_dark.qss",FILE_styles).ToFileSystemPath,
+    FileManager::getResourcePath("window_white.qss",FILE_styles).ToFileSystemPath,
+    FileManager::getResourcePath("PreferencesWindowStyles_white.qss",FILE_styles).ToFileSystemPath,
+    FileManager::getResourcePath("PreferencesWindowStyles_dark.qss",FILE_styles).ToFileSystemPath,
+    FileManager::getResourcePath("system_evaluation_dark.qss",FILE_styles).ToFileSystemPath,
+  };
 #endif //FILEMANGER_H

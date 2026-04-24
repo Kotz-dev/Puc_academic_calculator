@@ -98,8 +98,6 @@ add_executable(EduMetrics
         forms/aboutdialog.ui
         src/data/item_system_evaluation.cpp
         include/data/item_system_evaluation.h
-        src/io/PatchImagem.cpp
-        include/io/PatchImagem.h
 )
 
 # -------------------------

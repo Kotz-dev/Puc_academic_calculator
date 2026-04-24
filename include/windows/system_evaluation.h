@@ -21,7 +21,7 @@ public:
 private slots :
     void on_btn_apply_system_clicked();
     void on_btn_close_window_clicked();
-    void inilizacao_list_();
+    void on_list_faculdade_currentRowChanged(int currentRow);
 
 private:
     Ui::evaluation_system *ui;

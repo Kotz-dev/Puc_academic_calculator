@@ -3,23 +3,15 @@
 //
 
 #include "managers/UIManager.h"
+
+#include <fmt/chrono.h>
+
 #include "windows/MainWindow.h"
 #include "GlobalAccess.h"
 #include "JsonParser.h"
 
-Style_Table::Style::Style() {
-}
-QString gets (std::string name ) {
-    QString styleSheet;
-    for (auto & i : style_sheet_paths) {
-        if (i.string().find(name) != std::string::npos) {
-            QFile f(i);
-            f.open(QFile::ReadOnly);
-            styleSheet = f.readAll();
-        }
-    }
-    return styleSheet;
-}
+Style_Table::Style::Style() {}
+
 
 void Style_Table::Style::setRowResult(QTableWidget *table, int row, int status) {
      if (table != nullptr) {
@@ -29,9 +21,9 @@ void Style_Table::Style::setRowResult(QTableWidget *table, int row, int status) 
          }
 
          if (status == 1) {
-             table->item(row,7)->setText("Aprovado");
-             table->item(row,7)->setBackground(QColor(Qt::darkGreen));
-
+             auto get =  FileManager::getResourcePath("table_aprovado.png",PATCH_TYPE_::FILE_IMAGE).To_String_;
+             table->setIconSize(QSize(table->rowHeight(row),table->columnWidth(7)));
+             table->item(row, 7)->setIcon(QPixmap(get).scaled(table->rowHeight(row),table->columnWidth(7),Qt::KeepAspectRatio,Qt::SmoothTransformation));
          }
 
          if (status == 2) {
@@ -47,7 +39,7 @@ void Style_Table::Style::clearCell(QTableWidget *table, int row, int column) {
     table->item(row, column)->setBackground(QColor::fromRgb(44,44,44,44));
 }
 
-void ui_controller::applyTheme(QString themeName) {
+void ui_styles_::applyTheme(QString themeName) {
 
     if (themeName == "Claro") {
         applyLightTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
@@ -57,34 +49,64 @@ void ui_controller::applyTheme(QString themeName) {
     }
 }
 
-void ui_controller::applyTheme() {
-
-    qDebug () << bool(GLOBAL::WINDOW::ui_PrenferecesWindow != nullptr);
+void ui_styles_::applyTheme() {
     if ((JsonParser::readJsonKey(GLOBAL::FILE_PATHS::CONFIG,"tema") == "Claro")) {
-        qDebug () << "Claro";
        applyLightTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
     }
     if ((JsonParser::readJsonKey(GLOBAL::FILE_PATHS::CONFIG,"tema") == "Escuro")) {
-        qDebug () << "Escuro";
         applyDarkTheme(GLOBAL::WINDOW::main,GLOBAL::WINDOW::ui_PrenferecesWindow);
     }
 }
-void ui_controller::applyLightTheme(MainWindow *ui,PreferencesWindow *op) {
+void ui_styles_::applyLightTheme(MainWindow *ui,PreferencesWindow *op) {
     if (ui != nullptr ) {
-        ui->setStyleSheet(gets("window_white.qss"));
+        ui->setStyleSheet(loadStyleSheet("window_white.qss"));
     }
     if (op != nullptr) {
-         op->setStyleSheet(gets("PreferencesWindowStyles_white.qss"));
+         op->setStyleSheet(loadStyleSheet("PreferencesWindowStyles_white.qss"));
     }
 }
-void ui_controller::applyDarkTheme(MainWindow *ui,PreferencesWindow *Prefe) {
+void ui_styles_::applyDarkTheme(MainWindow *ui,PreferencesWindow *Prefe) {
     if (ui != nullptr ) {
-        ui->setStyleSheet(gets("window_dark.qss"));
+        ui->setStyleSheet(loadStyleSheet("window_dark.qss"));
     }
     if (Prefe != nullptr) {
-        Prefe->setStyleSheet(gets("PreferencesWindowStyles_dark.qss"));
+        Prefe->setStyleSheet(loadStyleSheet("PreferencesWindowStyles_dark.qss"));
     }
 }
+void UI_FONT::text(QString fonte, frw obj) {
+    if (fonte.isEmpty()) {
+        return;
+    }
+    if (obj.ui_main_window == nullptr && obj.ui_preferences_window == nullptr) {
+        return;
+    }
+
+     obj.ui_preferences_window->label_tema->setFont(QFont(fonte));
+     obj.ui_preferences_window->label_fonte->setFont(QFont(fonte));
+     obj.ui_preferences_window->comboBox->setFont(QFont(fonte));
+     obj.ui_preferences_window->fontComboBox->setFont(QFont(fonte));
+     obj.ui_preferences_window->Combox_tema->setFont(QFont(fonte));
+     obj.ui_preferences_window->lineEdit->setFont(QFont(fonte));
+     obj.ui_preferences_window->btn_search_paste->setFont(QFont(fonte));
+     obj.ui_preferences_window->btn_aplicar->setFont(QFont(fonte));
+     obj.ui_preferences_window->btn_salvar->setFont(QFont(fonte));
+     obj.ui_preferences_window->label->setFont(QFont(fonte));
+
+    obj.ui_main_window->menuArquivos->setFont(QFont(fonte));
+    obj.ui_main_window->menuFerramentas->setFont(QFont(fonte));
+    obj.ui_main_window->tableWidget->setFont(QFont(fonte));
+
+    for (int a =0; a < obj.ui_main_window->tableWidget->columnCount();a++) {
+        for (int b = 0; b < obj.ui_main_window->tableWidget->rowCount();b++) {
+            obj.ui_main_window->tableWidget->item(b,a)->setFont(QFont(fonte));
+        }
+        obj.ui_main_window->tableWidget->horizontalHeaderItem(a)->setFont(QFont(fonte));
+    }
+    obj.ui_main_window->label->setFont(QFont(fonte));
+
+
+}
+
 void UI_FONT::text(QString fonte,Ui::PreferencesWindow * ui,Ui_MainWindow *win) {
      if (ui == nullptr) {
          return;
@@ -112,6 +134,32 @@ void UI_FONT::text(QString fonte,Ui::PreferencesWindow * ui,Ui_MainWindow *win) 
     }
    win->label->setFont(QFont(fonte));
 }
+
+
+void UI_FONT::text(frw obj) {
+    auto get = obj.json["Fonte"];
+    if (obj.ui_preferences_window != nullptr) {
+        obj.ui_preferences_window->label_tema->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->label_fonte->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->comboBox->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->fontComboBox->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->Combox_tema->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->lineEdit->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->btn_search_paste->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->btn_aplicar->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->btn_salvar->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->label->setFont(QString::fromStdString(get).remove("\\"));
+    }
+     if (obj.ui_main_window != nullptr) {
+             obj.ui_main_window->menuArquivos->setFont(QFont(QString::fromStdString(get).remove("\\")));
+             obj.ui_main_window->menuFerramentas->setFont(QFont(QString::fromStdString(get).remove("\\")));
+             obj.ui_main_window->tableWidget->setFont(QFont(QString::fromStdString(get).remove("\\")));
+             for (int a =0; a < obj.ui_main_window->tableWidget->columnCount();a++) {
+                 obj.ui_main_window->tableWidget->horizontalHeaderItem(a)->setFont(QString::fromStdString(get).remove("\\"));
+             }
+     }
+}
+
 
 void UI_FONT::text(nlohmann::json json, Ui::PreferencesWindow *ui) {
     if (ui != nullptr) {

@@ -13,10 +13,6 @@
 
 
 
-QString converter (std::filesystem::path path) {
-    return QString::fromStdString(path.string());
-}
-
 enum UNIVERSIDADE {
     PUC = 0,
     UNIVERSO = 1,
@@ -24,14 +20,13 @@ enum UNIVERSIDADE {
 };
 
 QString indexImage(UNIVERSIDADE Un) {
-     std::vector<std::filesystem::path> list = {"Logo_PUC.png","Logo_UNIV.png","Logo_personalizado.png"};
-    return converter(PatchImagem::path_(list[Un].string(),FILE_IMAGE));
-}
-
-void evaluation_system::inilizacao_list_ () {
-    if (ui->list_faculdade->currentRow() == 1) {
-        ui->list_faculdade->clear();
-    }
+     std::vector<std::filesystem::path> list =
+         {
+         "Logo_PUC.png",
+         "Logo_UNIV.png",
+         "Logo_personalizado.png"
+         };
+    return FileManager::getResourcePath(list[Un].string(),FILE_IMAGE).To_String_;
 }
 
 
@@ -65,13 +60,16 @@ evaluation_system::evaluation_system(QWidget *parent) :
     QDialog(parent), ui(new Ui::evaluation_system) {
     ui->setupUi(this);
     init(ui);
-    setStyleSheet(gets("system_evaluation_dark.qss"));
+    setStyleSheet(loadStyleSheet("system_evaluation_dark.qss"));
 }
 
 evaluation_system::~evaluation_system() {
     delete ui;
 }
 
+void evaluation_system::on_list_faculdade_currentRowChanged(int currentRow) {
+
+}
 
 void evaluation_system::on_btn_close_window_clicked() {
     close();

@@ -8,11 +8,17 @@
 #include  <QString>
 #include  "managers/LanguageManager.h"
 #include  "windows/PreferencesWindow.h"
-#include <io/PatchImagem.h>
 #include <io/FileManager.h>
 #include <QDir>
 
 class MainWindow;
+
+
+struct GLOBAL_ {
+     static inline   Ui_PreferencesWindow *ui_PreferencesWindow;
+     static inline   MainWindow *main;
+     static inline   Ui::MainWindow *ui_MainWindow;
+};
 
 
 namespace GLOBAL {
