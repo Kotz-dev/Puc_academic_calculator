@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>addsubjectdialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+border : 4px solid #3a3a3a;
+}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -143,9 +148,6 @@
    </item>
    <item>
     <widget class="QFrame" name="frame_2">
-     <property name="styleSheet">
-      <string notr="true">background-color:none;</string>
-     </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
      </property>
@@ -153,21 +155,6 @@
       <enum>QFrame::Shadow::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <property name="spacing">
-       <number>0</number>
-      </property>
       <item row="2" column="0">
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -250,7 +237,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox"/>
+         <widget class="QComboBox" name="combox_list_semestre"/>
         </item>
        </layout>
       </item>

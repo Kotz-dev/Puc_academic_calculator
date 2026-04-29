@@ -1,17 +1,34 @@
-QFrame#frame {
- background-color: black;
+QDialog {
+ border : 4px solid #3a3a3a;
 }
-QFrame#frame_2{
-background-color: black;
+QFrame#frame {
+background-color : #202020;
+}
+QFrame#frame_2 {
+background-color: transparent;
+border-radius: 0px;
 }
 QFrame#frame_3 {
-background-color: black;
+background-color:#141414;
+border: 1px solid #000000;
 }
 QFrame#frame_4 {
-background-color: black;
+background-color: transparent;
+border-radius : 0px;
 }
 
-
+QPushButton{
+  background-color : #0d0d0d;
+  border-radius : 0px;
+  border: 1px solid;
+  border-color : #555555;
+}
+QPushButton:hover {
+    background-color: #2f8fd8;   /* azul sólido — igual ao botão "Regular" */
+    border: 1px solid #7cb9e8;
+    border-radius: 0px;
+    color: white;
+}
 #btn_save {
     background-color:  rgb(0, 100, 190);
     border-radius: 1px;

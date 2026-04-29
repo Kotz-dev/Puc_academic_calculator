@@ -24,6 +24,10 @@ public:
         void on_btn_close_clicked();
         void on_btn_save_clicked();
         void on_btn_cancel_clicked();
+        void on_btn_btn_3_avaliacoes_clicked();
+        void on_btn_btn_2_avaliacoes_clicked();
+        void on_btn_regular_clicked();
+        void on_btn_estagio_tcc_clicked();
 private:
     Ui::addsubjectdialog *ui;
 };
