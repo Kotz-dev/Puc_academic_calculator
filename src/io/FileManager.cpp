@@ -17,7 +17,9 @@ QString loadStyleSheet (std::string name,PATCH_TYPE_ type) {
     }
     if (type == FILE_IMAGE) {
         Path = "resources/images/";
-        return QString::fromStdString(std::filesystem::current_path().remove_filename() / Path / name);
+        auto c = std::filesystem::current_path().remove_filename() / Path / name;
+        QString teste = QString::fromStdString(c.string());
+        return teste;
     }
     if (type == FILE_IDIOMA_) {
         Path = "resources/i18n/";

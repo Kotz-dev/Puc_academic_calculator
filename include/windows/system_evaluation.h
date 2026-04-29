@@ -6,16 +6,25 @@
 #define PUCSIMULATOR_SYSTEM_EVALUATION_H
 
 #include <QDialog>
+#include <vector>
+#include "item_system_evaluation.h"
 
+enum UNIVERSIDADE {
+    PUC = 0,
+    UNIVERSO = 1,
+    PERSONALIZADO = 2
+};
+
+QString indexImage(UNIVERSIDADE Un);
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class evaluation_system; }
 QT_END_NAMESPACE
 
 class evaluation_system : public QDialog {
-Q_OBJECT
+    Q_OBJECT
 
-public:
+    public:
     explicit evaluation_system(QWidget *parent = nullptr);
     ~evaluation_system() override;
 private slots :
@@ -24,6 +33,8 @@ private slots :
     void on_list_faculdade_currentRowChanged(int currentRow);
 
 private:
+    void init();
+    std::vector<ITEM> list_items_ = {};
     Ui::evaluation_system *ui;
 };
 

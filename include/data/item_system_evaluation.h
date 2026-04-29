@@ -8,11 +8,6 @@
 #include <QPixmap>
 #include <QString>
 
-#pragma once
-#include <QString>
-#include <QPixmap>
-#include <windows/system_evaluation.h>
-
 class ITEM {
 private:
     QString nome_universidade;
@@ -28,7 +23,9 @@ private:
 public:
     ITEM();
 
-    ITEM(QPixmap logo,QString list_nome,QString Nome_unviversade);
+    ITEM(QPixmap logo, QString list_nome, QString Nome_universidade);
+
+    ITEM(const QString &logoPath, const QString &list_nome, const QString &Nome_universidade, int frequencia);
 
 
     void setListNomeUniversidade(QString nome);

@@ -4,14 +4,21 @@
 
 #include "item_system_evaluation.h"
 
-#include <ui_system_evaluation.h>
-
-
-ITEM::ITEM(QPixmap logo,QString list_nome,QString Nome_unviversade) {
-    this->logo_universidade = logo;
+ITEM::ITEM(QPixmap logo, QString list_nome, QString Nome_universidade) {
+    this->logo_universidade      = logo;
     this->list_nome_universidade = list_nome;
-    this->nome_universidade = Nome_unviversade;
+    this->nome_universidade      = Nome_universidade;
 }
+
+ITEM::ITEM(const QString &logoPath, const QString &list_nome, const QString &Nome_universidade, int frequencia)
+    : logo_universidade(logoPath),
+      list_nome_universidade(list_nome),
+      nome_universidade(Nome_universidade),
+      is_selected(false),
+      nota_minima(0),
+      nota_minima_final(0),
+      frequencia_minima(frequencia),
+      is_apply(false) {}
 
 ITEM::ITEM()
     : is_selected(false),
