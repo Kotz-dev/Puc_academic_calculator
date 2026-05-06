@@ -1,0 +1,57 @@
+{
+  "FILE_MENU":          "File",
+  "FILE_NEW":           "New",
+  "FILE_OPEN":          "Open",
+  "FILE_SAVE":          "Save",
+  "FILE_SAVE_AS":       "Save As",
+  "FILE_EXIT":          "Exit",
+
+  "TOOLS_MENU":         "Tools",
+  "TOOLS_PREFERENCES":  "System Preferences",
+  "TOOLS_EVALUATION":   "Evaluation System",
+
+  "HELP_MENU":          "Help",
+  "HELP_ABOUT":         "About",
+
+  "TABLE_NAME":         "Discipline",
+  "TABLE_PLANNED":      "Planned Classes",
+  "TABLE_TAUGHT":       "Taught Classes",
+  "TABLE_ATTENDANCE":   "Number of Attendances",
+  "TABLE_GRADE_1":      "N1",
+  "TABLE_GRADE_2":      "N2",
+  "TABLE_GRADE_3":      "N3",
+  "TABLE_GRADE_4":      "N4",
+  "TABLE_AVERAGE":      "Average",
+  "TABLE_RESULT":       "Result",
+  "TABLE_MISS_AVG":     "Needed Average",
+
+  "RESULT_APPROVED":    "Approved",
+  "RESULT_FAILED":      "Failed",
+  "RESULT_FINAL":       "Final",
+  "RESULT_FAILED_FREQ": "Failed/Freq.",
+  "RESULT_APT":         "Apt",
+  "RESULT_INAPT":       "Inapt",
+
+  "BTN_ADD":            "Add",
+  "BTN_REMOVE":         "Remove",
+  "BTN_APPLY":          "Apply",
+  "BTN_SAVE":           "Save",
+  "BTN_CANCEL":         "Cancel",
+  "BTN_SEARCH":         "Search",
+
+  "PREF_TITLE":         "Preference System",
+  "PREF_THEME":         "Theme",
+  "PREF_THEME_DARK":    "Dark",
+  "PREF_THEME_LIGHT":   "Light",
+  "PREF_FONT":          "Font",
+  "PREF_LANGUAGE":      "Language",
+  "PREF_CONFIG":        "Configuration",
+
+  "DISCIPLINE_TITLE":   "New Discipline",
+  "DISCIPLINE_NAME":    "Discipline Name",
+  "DISCIPLINE_PERIOD":  "Period / Semester",
+  "DISCIPLINE_REGULAR": "Regular",
+  "DISCIPLINE_3EVAL":   "3 Evaluations",
+  "DISCIPLINE_4EVAL":   "4 Evaluations",
+  "DISCIPLINE_INTERNSHIP": "Internship / TCC"
+}

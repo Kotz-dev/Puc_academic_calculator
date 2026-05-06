@@ -9,11 +9,13 @@
 #include "ui_aboutdialog.h"
 #include <QDesktopServices>
 #include <QUrl>
+#include <version.h>
 
 
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent), ui(new Ui::AboutDialog) {
     ui->setupUi(this);
+    ui->version->setText("Versão: "+  EduMestrics::VERSION);
 }
 
 AboutDialog::~AboutDialog() {

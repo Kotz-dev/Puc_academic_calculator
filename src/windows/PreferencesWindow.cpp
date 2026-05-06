@@ -14,14 +14,14 @@
 #include "qwidget.h"
 #include "UIManager.h"
 #include <fmt/std.h>
+#include <LanguageManager.h>
 
 
 void PreferencesWindow::on_fontComboBox_currentIndexChanged(int index) {
 
 }
 
-//idioma
-void PreferencesWindow::on_comboBox_currentIndexChanged(int index) {
+void PreferencesWindow::on_Combox_Language_currentIndexChanged(int index) {
      has_selected_idiom = true;
 }
 
@@ -34,6 +34,7 @@ PreferencesWindow::PreferencesWindow(QWidget *parent) : QMainWindow(parent), ui_
     has_selected_theme = false;
     GLOBAL::WINDOW::ui_PrenferecesWindow = this;
     ui_preferences_window_->setupUi(this);
+    LanguageManager::TraduzirPrencesWindow();
     ui_styles_::applyTheme();
     auto value = GLOBAL::json["Fonte"];
     ui_preferences_window_->fontComboBox->setCurrentFont(QString::fromStdString(nlohmann::to_string(value)));
@@ -46,28 +47,10 @@ PreferencesWindow::PreferencesWindow(QWidget *parent) : QMainWindow(parent), ui_
        auto get= QString::fromStdString(JsonParser::readJsonKey(GLOBAL::FILE_PATHS::CONFIG,"config")).remove("'");
        ui_preferences_window_->lineEdit->setText(QUrl{get}.fileName());
    }
-    if (GLOBAL::idioma == "Ingles") {
-            setWindowTitle(QString::fromStdString(LanguageUI::getTranslation("en","Sistema de Preferencia"))
-            .remove(""));
-        auto i = LanguageUI::getTranslation("en","Escuro");
-        auto get = QString::fromStdString(nlohmann::to_string(i));
-        JsonParser::removeQuotes(get);
-        ui_preferences_window_->Combox_tema->setItemText(0,get);
-        LanguageUI::applyLanguage(GLOBAL::idioma);
-        ui_preferences_window_->comboBox->setCurrentIndex(1);
-    }
-    if (GLOBAL::idioma == "Português") {
-        setWindowTitle(QString::fromStdString
-            (LanguageUI::getTranslation("Português","Preference System"))
-            .remove(""));
-        LanguageUI::applyLanguage(GLOBAL::idioma);
-        ui_preferences_window_->comboBox->setCurrentIndex(0);
-    }
 }
 
 
 void PreferencesWindow::set_setting (QString Theme,QString idioma,QString Fonte) {
-     ui_preferences_window_->comboBox->setCurrentIndex(LanguageUI::getLanguageIndex(Theme));
      ui_preferences_window_->Combox_tema->setCurrentText(Theme);
      ui_preferences_window_->fontComboBox->setCurrentFont(Fonte);
 }
@@ -90,7 +73,6 @@ void PreferencesWindow::on_btn_search_paste_clicked() {
         JsonParser::removeQuotes(text[i]);
     }
      set_setting(text[2],text[0],text[1]);
-    LanguageUI::applyLanguage(text[0]);
    // UI_FONT::text(text[1],ui_preferences_window_,GLOBAL::WINDOW::UI);
     ui_styles_::applyTheme(text[2]);
     if (json_array.empty() == false) {
@@ -98,26 +80,7 @@ void PreferencesWindow::on_btn_search_paste_clicked() {
     }
 }
 void PreferencesWindow::on_btn_aplicar_clicked() {
-    Json json,json_config;
-    json_config = GLOBAL::json;
-    auto idioma = ui_preferences_window_->comboBox->currentText();
-    QString idi;
-    QString Palavra_chave = "";
     UI_FONT::text(ui_preferences_window_->fontComboBox->currentText(),ui_preferences_window_,GLOBAL::WINDOW::UI);
-    if (idioma == "Ingles") {
-        Palavra_chave = "Sistema de Preferencia";
-        idi = "en";
-    }
-    if (idioma == "Português") {
-        Palavra_chave = "PreferenceSystem";
-        idi = "Português";
-    }
-    if (has_selected_idiom == true) {
-        LanguageUI::applyLanguage(idioma);
-        setWindowTitle(QString::fromStdString
-          (LanguageUI::getTranslation(idi,Palavra_chave))
-          .remove(""));
-    }
     if (has_selected_theme == true) {
         ui_styles_::applyTheme(ui_preferences_window_->Combox_tema->currentText());
     }
@@ -127,7 +90,7 @@ void PreferencesWindow::on_btn_aplicar_clicked() {
 void PreferencesWindow::on_btn_salvar_clicked() {
 
     ApplicationConfig config;
-    config.language    = ui_preferences_window_->comboBox->currentText();
+    config.language    = ui_preferences_window_->Combox_Language->currentText();
     config.fontFamily     = ui_preferences_window_->fontComboBox->currentText();
     config.themeName     = ui_preferences_window_->Combox_tema->currentText();
 

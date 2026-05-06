@@ -6,7 +6,15 @@
 #include <iostream>
 #include "JsonParser.h"
 
-
+std::vector<std::filesystem::path> ListFiles(std::filesystem::path is) {
+    std::vector<std::filesystem::path> style_sheet_paths;
+    if (is.empty() == false) {
+        for (auto & i : std::filesystem::recursive_directory_iterator(is)) {
+            style_sheet_paths.push_back(i.path());
+        }
+    }
+    return style_sheet_paths;
+}
 
 QString loadStyleSheet (std::string name,PATCH_TYPE_ type) {
     QString styleSheet;
@@ -14,6 +22,15 @@ QString loadStyleSheet (std::string name,PATCH_TYPE_ type) {
     std::string Path = "";
     if (type == FILE_styles) {
         Path = "resources/styles/";
+        std::filesystem::path get = std::filesystem::current_path().remove_filename() / Path;
+        for (auto & i :  ListFiles(get)) {
+            if (i.string().find(name) != std::string::npos) {
+                QFile f(i);
+                f.open(QFile::ReadOnly);
+                styleSheet = f.readAll();
+            }
+        }
+       return styleSheet;
     }
     if (type == FILE_IMAGE) {
         Path = "resources/images/";
@@ -21,24 +38,7 @@ QString loadStyleSheet (std::string name,PATCH_TYPE_ type) {
         QString teste = QString::fromStdString(c.string());
         return teste;
     }
-    if (type == FILE_IDIOMA_) {
-        Path = "resources/i18n/";
-    }
-
-    std::filesystem::path get = std::filesystem::current_path().remove_filename() / Path;
-    std::vector<std::filesystem::path> style_sheet_paths;
-    for (auto & i : std::filesystem::recursive_directory_iterator(get)) {
-        style_sheet_paths.push_back(i.path());
-    }
-
-    for (auto & i : style_sheet_paths) {
-        if (i.string().find(name) != std::string::npos) {
-            QFile f(i);
-            f.open(QFile::ReadOnly);
-            styleSheet = f.readAll();
-        }
-    }
-    return styleSheet;
+    return "";
 }
 
 enum OS {
@@ -48,7 +48,6 @@ enum OS {
 FileSystemInfo FileManager::resolveFilePaths(FileType type) {
     FileSystemInfo Cfile
     {
-        "",
         "",
         false
     };
@@ -60,32 +59,13 @@ FileSystemInfo FileManager::resolveFilePaths(FileType type) {
         if (FileType::CONFIG == type) {
             Cfile.file_ = "/home/" + QDir::home().dirName().toStdString() + "/Documentos/PUCSimulador/config.cfgVx";
         }
-        if (FileType::FILE_IDIOMA == type)  {
-            Cfile.file_idioma = "/home/" + QDir::home().dirName().toStdString() + "/CLionProjects/EduMetrics/resources/i18n/idioma.ivx";
-        }
     }
     if (getOperatingSystem() == OS::WINDOWS) {
-        if (FileType::DATE == type) {
-            
-        }
         if (FileType::PUCSimulador == type) {
             Cfile.file_ = QDir::homePath().toStdString() + "/Documents/PUCSimulador";
         }
         if (FileType::CONFIG == type) {
             Cfile.file_ = QDir::homePath().toStdString() + "/Documents/PUCSimulador/config.cfgVx";
-        }
-        if (FileType::FILE_IDIOMA == type)  {
-            try {
-                for (auto & i : std::filesystem::recursive_directory_iterator( std::filesystem::current_path().remove_filename())) {
-                    if (i.path().string().find("idioma.ivx") != std::string::npos) {
-                        qDebug() << i.path().string();
-                        Cfile.file_idioma = i.path().string();
-                        break;
-                    }
-                }
-            }catch (std::filesystem::filesystem_error &e) {
-                std::cout << e.what() << std::endl;
-            }
         }
     }
     if (Cfile.file_.empty() == false) {
@@ -113,8 +93,7 @@ void FileManager::initialize() {
     if (resolveFilePaths(FileType::PUCSimulador).exist == false){
         std::filesystem::create_directories(resolveFilePaths(FileType::PUCSimulador).file_);
     }
-    GLOBAL::FILE_PATHS::CONFIG =   std::move(QString::fromStdString(resolveFilePaths(FileType::CONFIG).file_.string()));
-    GLOBAL::FILE_PATHS::LANGUAGE = std::move(QString::fromStdString(resolveFilePaths(FileType::FILE_IDIOMA).file_idioma.string()));
+    GLOBAL::FILE_PATHS::CONFIG   = std::move(QString::fromStdString(resolveFilePaths(FileType::CONFIG).file_.string()));
 
     if (resolveFilePaths(FileType::CONFIG).exist == false) {
         save(GLOBAL::FILE_PATHS::CONFIG, defaultConfig);

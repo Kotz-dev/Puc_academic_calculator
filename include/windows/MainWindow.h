@@ -11,7 +11,6 @@
 #include <QFileDialog>
 #include "io/FileManager.h"
 #include "utils/GlobalAccess.h"
-#include "managers/LanguageManager.h"
 #include <QDir>
 
 QT_BEGIN_NAMESPACE
@@ -29,8 +28,6 @@ class MainWindow : public QMainWindow  {
 private slots:
     void on_btn_add_clicked();
     void on_btn_remover_clicked();
-    void Update();
-    void Update_table_data();
     void on_actionAbrir_triggered();
     void on_actionNovo_triggered();
     void on_actionSalvar_triggered();
@@ -43,6 +40,9 @@ private slots:
 
     void initialize ();
     void saveTableData(QString filePath_,SaveMode saveMode);
+
+
+    bool showAddSubjectDialog();
 private:
     Ui::MainWindow *ui;
     QTimer *timer;

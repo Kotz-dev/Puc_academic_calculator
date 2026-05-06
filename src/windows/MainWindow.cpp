@@ -4,7 +4,7 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui__windows_.h" resolved
 
-
+#include  "exprtk.hpp"
 #include "windows/MainWindow.h"
 #include <QDebug>
 #include <ui_aboutdialog.h>
@@ -16,46 +16,17 @@
 #include <windows/system_evaluation.h>
 
 #include <windows/aboutdialog.h>
-
 #include "AddSubjectDialog.h"
+#include <version.h>
 
-#define version "v0.0.4"
+#include <TableGrade.h>
+#include <LanguageManager.h>
 
 static bool isGradeOutOfRange(double n1,double n2) {
     if (n1 > 10.0 || n2 > 10.0) {
         return true;
     }
     return false;
-}
-void MainWindow::Update_table_data() {
-    if (ui->tableWidget->rowCount() == 0 && ui->tableWidget->columnCount() == 0) {
-        return;
-    }
-    if (ui->tableWidget->rowCount() > 0) {
-        for (int index_item = 0; index_item < ui->tableWidget->rowCount(); index_item++) {
-            auto N1 = ui->tableWidget->item(index_item, 4)->text().toDouble();
-            auto N2 = ui->tableWidget->item(index_item, 5)->text().toDouble();
-            auto IA = ui->lineEdit->text().toFloat();
-            auto Taught_Classes = ui->tableWidget->item(index_item, 2)->text().toInt();
-            auto Attendance_Count = ui->tableWidget->item(index_item, 3)->text().toInt();
-            if (this->system_notas != nullptr) {
-                this->system_notas->setGradeData(0,Taught_Classes,Attendance_Count,N1,N2,IA);
-
-                if (system_notas->isValidGradeFormat(index_item))
-                {
-                    if (isGradeOutOfRange(N1,N2)) {
-                        return;
-                    }
-                    this->system_notas->processGradeResult(index_item);
-                }else {
-                    Style_Table::Style::clearCell(ui->tableWidget,index_item,TYPE_GRADE::Resultado);
-                    Style_Table::Style::clearCell(ui->tableWidget,index_item,TYPE_GRADE::Media);
-                    Style_Table::Style::clearCell(ui->tableWidget,index_item,TYPE_GRADE::FALTA_MEDIA);
-                }
-                this->system_notas->reset();
-            }
-        }
-    }
 }
 
 /**
@@ -69,22 +40,18 @@ void MainWindow::Update_table_data() {
  * - Inicializa as variáveis globais
  */
 void MainWindow::initialize() {
-    ui->label_version->setText(version);
+    ui->label_version->setText(EduMestrics::VERSION);
     GLOBAL::WINDOW::main = this;
     std::unique_ptr<ui_styles_> controller_ui = std::make_unique<ui_styles_>();
     FileManager::initialize();
-    GLOBAL::init_global(ui);
+    TableGrade::setMainWindow(ui);
+    GLOBAL::WINDOW::UI = ui;
     ui_styles_::applyTheme();
+    LanguageManager::initialize_language();
+}
 
-}
-/**
-* Função que atualiza as notas na tabela
-* Chamada periodicamente pelo timer para manter 
-* a interface atualizada
-*/
-void MainWindow::Update() {
-    Update_table_data();
-}
+
+
 /**
  * Construtor da classe _windows_
  * Inicializa a interface gráfica, configura botões e timer
@@ -96,13 +63,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     initialize();
     FileManager::Load(GLOBAL::FILE_PATHS::CONFIG,GLOBAL::json);
     if (GLOBAL::json.empty() == false) {
-        LanguageUI::initialize(GLOBAL::json,this->ui,GLOBAL::idioma);
         UI_FONT::text(GLOBAL::json,ui);
     }
     system_notas = std::make_shared<GradeSystem>(ui->tableWidget);
     this->timer = new QTimer(this);
     timer->setInterval(16);
-    connect(timer, SIGNAL(timeout()), this, SLOT(Update()));
+    connect(timer, &QTimer::timeout, &TableGrade::Update);
     timer->start();
 }
 /**
@@ -123,45 +89,45 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
  * @note Se a tabela estiver vazia, a função retorna sem fazer nada
  */
 void MainWindow::saveTableData(QString filePath_,SaveMode saveMode) {
-    bool is_file_save = false;
-
-    if (ui->tableWidget->rowCount() == 0) {
-        return;
-    }
-    for (int index_item = 0; index_item < ui->tableWidget->rowCount(); index_item++) {
-        auto nome = ui->tableWidget->item(index_item, 0)->text();
-        auto aula_prevista = ui->tableWidget->item(index_item, 1)->text().toInt();
-        auto aula_ministradas = ui->tableWidget->item(index_item, 2)->text().toInt();
-        auto numero_presenca = ui->tableWidget->item(index_item, 3)->text().toInt();
-        auto N1 = ui->tableWidget->item(index_item, 4)->text().toDouble();
-        auto N2 = ui->tableWidget->item(index_item, 5)->text().toDouble();
-        item_list_.push_back(StudentRecord(nome,aula_prevista,aula_ministradas,numero_presenca,N1,N2));
-    }
-    ui->label_3->clear();
-    if (info_file.filePath.isEmpty() == false && is_file_open == true) {
-        QFile outputFile(info_file.filePath);
-        if (outputFile.exists() == true) {
-            outputFile.remove();
-        }
-        is_file_save = FileManager::save(info_file.filePath,item_list_);
-    }
-    if (saveMode == SaveMode::SAVE_AS) {
-        is_file_save = FileManager::save(filePath_,item_list_);
-    }
-    if (saveMode == SaveMode::SAVE_LOCAL_FILE) {
-        is_file_save = FileManager::save(GLOBAL::FILE_PATHS::DATA,item_list_) ;
-    }
-    if (is_file_save) {
-        ui->label_3->setText("Salvo !");
-        QTimer::singleShot(2000, this, [this]() { ui->label_3->clear(); });
-
-    }
-    else {
-        ui->label_3->setText("Falha de salvamento");
-        QTimer::singleShot(2000, this, [this]() { ui->label_3->clear(); });
-
-    }
-    item_list_.clear();
+    // bool is_file_save = false;
+    //
+    // if (ui->tableWidget->rowCount() == 0) {
+    //     return;
+    // }
+    // for (int index_item = 0; index_item < ui->tableWidget->rowCount(); index_item++) {
+    //     auto nome = ui->tableWidget->item(index_item, 0)->text();
+    //     auto aula_prevista = ui->tableWidget->item(index_item, 1)->text().toInt();
+    //     auto aula_ministradas = ui->tableWidget->item(index_item, 2)->text().toInt();
+    //     auto numero_presenca = ui->tableWidget->item(index_item, 3)->text().toInt();
+    //     auto N1 = ui->tableWidget->item(index_item, 4)->text().toDouble();
+    //     auto N2 = ui->tableWidget->item(index_item, 5)->text().toDouble();
+    //     item_list_.push_back(StudentRecord(nome,aula_prevista,aula_ministradas,numero_presenca,N1,N2));
+    // }
+    // ui->label_3->clear();
+    // if (info_file.filePath.isEmpty() == false && is_file_open == true) {
+    //     QFile outputFile(info_file.filePath);
+    //     if (outputFile.exists() == true) {
+    //         outputFile.remove();
+    //     }
+    //     is_file_save = FileManager::save(info_file.filePath,item_list_);
+    // }
+    // if (saveMode == SaveMode::SAVE_AS) {
+    //     is_file_save = FileManager::save(filePath_,item_list_);
+    // }
+    // if (saveMode == SaveMode::SAVE_LOCAL_FILE) {
+    //     is_file_save = FileManager::save(GLOBAL::FILE_PATHS::DATA,item_list_) ;
+    // }
+    // if (is_file_save) {
+    //     ui->label_3->setText("Salvo !");
+    //     QTimer::singleShot(2000, this, [this]() { ui->label_3->clear(); });
+    //
+    // }
+    // else {
+    //     ui->label_3->setText("Falha de salvamento");
+    //     QTimer::singleShot(2000, this, [this]() { ui->label_3->clear(); });
+    //
+    // }
+    // item_list_.clear();
 }
 void MainWindow::on_actionOpition_triggered() {
 
@@ -288,6 +254,20 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+bool  MainWindow::showAddSubjectDialog() {
+    std::shared_ptr<addsubjectdialog> janela = std::make_shared<addsubjectdialog>(this);
+    janela->setWindowModality(Qt::WindowModal);
+    janela->setWindowFlags(Qt::Window| Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
+   TableGrade::setaddsubjectdialog(janela);
+    auto get =  janela->exec();
+
+    if (get == QDialog::Rejected) {
+        TableGrade::reset();
+        return true;
+    }
+    return false;
+}
+
 /**
  * Função chamada quando o botão "Add" é clicado
  * Adiciona uma nova linha na tabela e inicializa suas células
@@ -295,15 +275,9 @@ MainWindow::~MainWindow() {
  */
 void MainWindow::on_btn_add_clicked() {
 
-   //  std::unique_ptr<addsubjectdialog> janela = std::make_unique<addsubjectdialog>(this);
-   //  janela->setWindowModality(Qt::WindowModal);
-   //  janela->setWindowFlags(Qt::Window| Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
-   // auto get =  janela->exec();
-   //
-   //  if (get == QDialog::Rejected) {
-   //      return;
-   //  }
-
+    if (showAddSubjectDialog()) {
+        return;
+    }
 
     if (ui->tableWidget->rowCount() >= 12) {
         return;

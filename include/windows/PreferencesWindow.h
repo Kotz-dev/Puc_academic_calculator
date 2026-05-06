@@ -24,7 +24,7 @@ private slots:
     void on_btn_salvar_clicked();
     void on_btn_search_paste_clicked();
     void on_Combox_tema_currentIndexChanged(int index);
-    void on_comboBox_currentIndexChanged(int index);
+    void on_Combox_Language_currentIndexChanged(int index);
     void on_fontComboBox_currentIndexChanged(int index);
     void set_setting (QString Theme,QString idioma,QString Fonte);
 public:

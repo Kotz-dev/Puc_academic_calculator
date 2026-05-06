@@ -24,9 +24,11 @@ public:
         void on_btn_close_clicked();
         void on_btn_save_clicked();
         void on_btn_cancel_clicked();
-        void on_btn_3_avaliacoes_clicked();
         void on_btn_regular_clicked();
         void on_btn_estagio_tcc_clicked();
+
+public :
+    Ui::addsubjectdialog *_ui_ () const ;
 private:
     Ui::addsubjectdialog *ui;
 };

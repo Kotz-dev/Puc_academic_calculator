@@ -59,7 +59,9 @@ QPushButton:hover {
     border-radius: 4px;
     padding: 2px 4px;
 }
-
+#btn_regular:checked {
+  background-color: #004684;
+}
 #btn_cancel {
   background-color: #303030;
   border-radius: 1px;

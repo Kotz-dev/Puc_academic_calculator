@@ -82,7 +82,7 @@ void UI_FONT::text(QString fonte, frw obj) {
 
      obj.ui_preferences_window->label_tema->setFont(QFont(fonte));
      obj.ui_preferences_window->label_fonte->setFont(QFont(fonte));
-     obj.ui_preferences_window->comboBox->setFont(QFont(fonte));
+     obj.ui_preferences_window->Combox_Language->setFont(QFont(fonte));
      obj.ui_preferences_window->fontComboBox->setFont(QFont(fonte));
      obj.ui_preferences_window->Combox_tema->setFont(QFont(fonte));
      obj.ui_preferences_window->lineEdit->setFont(QFont(fonte));
@@ -112,7 +112,7 @@ void UI_FONT::text(QString fonte,Ui::PreferencesWindow * ui,Ui_MainWindow *win) 
      }
     ui->label_tema->setFont(QFont(fonte));
     ui->label_fonte->setFont(QFont(fonte));
-    ui->comboBox->setFont(QFont(fonte));
+    ui->Combox_Language->setFont(QFont(fonte));
     ui->fontComboBox->setFont(QFont(fonte));
     ui->Combox_tema->setFont(QFont(fonte));
     ui->lineEdit->setFont(QFont(fonte));
@@ -140,7 +140,7 @@ void UI_FONT::text(frw obj) {
     if (obj.ui_preferences_window != nullptr) {
         obj.ui_preferences_window->label_tema->setFont(QString::fromStdString(get).remove("\\"));
         obj.ui_preferences_window->label_fonte->setFont(QString::fromStdString(get).remove("\\"));
-        obj.ui_preferences_window->comboBox->setFont(QString::fromStdString(get).remove("\\"));
+        obj.ui_preferences_window->Combox_Language->setFont(QString::fromStdString(get).remove("\\"));
         obj.ui_preferences_window->fontComboBox->setFont(QString::fromStdString(get).remove("\\"));
         obj.ui_preferences_window->Combox_tema->setFont(QString::fromStdString(get).remove("\\"));
         obj.ui_preferences_window->lineEdit->setFont(QString::fromStdString(get).remove("\\"));
@@ -165,7 +165,7 @@ void UI_FONT::text(nlohmann::json json, Ui::PreferencesWindow *ui) {
         auto get = json["Fonte"];
         ui->label_tema->setFont(QString::fromStdString(get).remove("\\"));
         ui->label_fonte->setFont(QString::fromStdString(get).remove("\\"));
-        ui->comboBox->setFont(QString::fromStdString(get).remove("\\"));
+        ui->Combox_Language->setFont(QString::fromStdString(get).remove("\\"));
         ui->fontComboBox->setFont(QString::fromStdString(get).remove("\\"));
         ui->Combox_tema->setFont(QString::fromStdString(get).remove("\\"));
         ui->lineEdit->setFont(QString::fromStdString(get).remove("\\"));

@@ -1,31 +1,29 @@
-//
-// Created by KoTz on 23/10/2025.
-//
-
 #ifndef LANGUAGE_MANAGER_H
 #define LANGUAGE_MANAGER_H
 
+#include <vector>
+#include <filesystem>
 
-#include <ui_MainWindow.h>
-#include <nlohmann/json.hpp>
-#include <ui_option.h>
+#include "JsonParser.h"
+#include <GlobalAccess.h>
 
-
-enum TYPE_IDIOMA{
-    IDIOMA_WINDOWS = 0,
-    IDIOMA_OPTION = 1,
-    IDIOMA_ALL    = 2
+enum LAGUAGEM {
+    Portugueses = 0,
+    English = 1
 };
 
 
-class LanguageUI {
+
+class LanguageManager : JsonParser {
+private :
+     static QString Language;
+     static QString  Languagem();
 public :
-    LanguageUI();
-    static void initialize(nlohmann::json & config, Ui::MainWindow * mainWindowUi, QString & currentLanguage);
-    static void applyLanguage(QString & languageKey);
-    static nlohmann::json getTranslation(QString languageKey, QString textKey);
-    static int getLanguageIndex(QString languageKey);
-};
+    static void initialize_language();
+    static void TraduzirMainWindow();
+    static void TraduzirPrencesWindow();
+    static LAGUAGEM getLanguage();
 
+};
 
 #endif //LANGUAGE_MANAGER_H

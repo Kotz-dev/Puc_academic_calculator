@@ -29,6 +29,7 @@ endif()
 find_package(fmt CONFIG REQUIRED)
 find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
+find_path(EXPRTK_INCLUDE_DIRS "exprtk.hpp")
 
 # -------------------------
 # Includes
@@ -43,6 +44,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/include/windows
         ${CMAKE_CURRENT_BINARY_DIR}
 )
+
 
 # Definição do caminho das UI (Qt)
 set(CMAKE_AUTOUIC_SEARCH_PATHS
@@ -102,6 +104,9 @@ add_executable(EduMetrics
         forms/AddSubjectDialog.ui
         src/data/item_system_evaluation.cpp
         include/data/item_system_evaluation.h
+        include/version.h
+        src/core/TableGrade.cpp
+        include/core/TableGrade.h
 )
 
 # -------------------------
@@ -115,6 +120,7 @@ target_link_libraries(EduMetrics PRIVATE
         fmt::fmt
         nlohmann_json::nlohmann_json
 )
+target_include_directories(EduMetrics PRIVATE ${EXPRTK_INCLUDE_DIRS})
 
 # Linux
 if(UNIX AND NOT APPLE)

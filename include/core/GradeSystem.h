@@ -9,7 +9,6 @@
 #include <fmt/format.h>
 #include "managers/UIManager.h"
 #include "data/StudentRecord.h"
-#include "managers/LanguageManager.h"
 
 
 enum TYPE_GRADE {

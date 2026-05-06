@@ -6,23 +6,16 @@
 #define AVALIACAODAPUC_GLOBAL_ACESS_H
 
 #include  <QString>
-#include  "managers/LanguageManager.h"
+#include  <nlohmann/json.hpp>
+#include  <ui_MainWindow.h>
+#include  <ui_option.h>
 #include  "windows/PreferencesWindow.h"
 #include <io/FileManager.h>
 #include <QDir>
 
 class MainWindow;
 
-
-struct GLOBAL_ {
-     static inline   Ui_PreferencesWindow *ui_PreferencesWindow;
-     static inline   MainWindow *main;
-     static inline   Ui::MainWindow *ui_MainWindow;
-};
-
-
 namespace GLOBAL {
-     extern   QString idioma;
      extern   bool is_aplica;
      extern   bool is_close_window_option;
      extern    int janela_vez;
@@ -35,10 +28,8 @@ namespace GLOBAL {
 
      namespace FILE_PATHS {
           inline    QString DATA;
-          inline    QString LANGUAGE;
           inline   QString CONFIG;
      }
-     extern   void init_global(Ui::MainWindow * windows);
      extern   void init_global(PreferencesWindow * option);
 }
 

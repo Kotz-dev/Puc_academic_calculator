@@ -1,0 +1,57 @@
+{
+  "FILE_MENU":          "Arquivo",
+  "FILE_NEW":           "Novo",
+  "FILE_OPEN":          "Abrir",
+  "FILE_SAVE":          "Salvar",
+  "FILE_SAVE_AS":       "Salvar como",
+  "FILE_EXIT":          "Sair",
+
+  "TOOLS_MENU":         "Ferramentas",
+  "TOOLS_PREFERENCES":  "Preferências do Sistema",
+  "TOOLS_EVALUATION":   "Sistema de Avaliação",
+
+  "HELP_MENU":          "Ajuda",
+  "HELP_ABOUT":         "Sobre",
+
+  "TABLE_NAME":         "Nome",
+  "TABLE_PLANNED":      "Aulas Previstas",
+  "TABLE_TAUGHT":       "Aulas Ministradas",
+  "TABLE_ATTENDANCE":   "Quantidade de Presenças",
+  "TABLE_GRADE_1":      "N1",
+  "TABLE_GRADE_2":      "N2",
+  "TABLE_GRADE_3":      "N3",
+  "TABLE_GRADE_4":      "N4",
+  "TABLE_AVERAGE":      "Média",
+  "TABLE_RESULT":       "Resultado",
+  "TABLE_MISS_AVG":     "Média Necessária",
+
+  "RESULT_APPROVED":    "Aprovado",
+  "RESULT_FAILED":      "Reprovado",
+  "RESULT_FINAL":       "Final",
+  "RESULT_FAILED_FREQ": "Reprovado/Frequência",
+  "RESULT_APT":         "Apto",
+  "RESULT_INAPT":       "Inapto",
+
+  "BTN_ADD":            "Adicionar",
+  "BTN_REMOVE":         "Remover",
+  "BTN_APPLY":          "Aplicar",
+  "BTN_SAVE":           "Salvar",
+  "BTN_CANCEL":         "Cancelar",
+  "BTN_SEARCH":         "Buscar",
+
+  "PREF_TITLE":         "Sistema de Preferências",
+  "PREF_THEME":         "Tema",
+  "PREF_THEME_DARK":    "Escuro",
+  "PREF_THEME_LIGHT":   "Claro",
+  "PREF_FONT":          "Fonte",
+  "PREF_LANGUAGE":      "Idioma",
+  "PREF_CONFIG":        "Configuração",
+
+  "DISCIPLINE_TITLE":   "Nova Disciplina",
+  "DISCIPLINE_NAME":    "Nome da Disciplina",
+  "DISCIPLINE_PERIOD":  "Período / Semestre",
+  "DISCIPLINE_REGULAR": "Regular",
+  "DISCIPLINE_3EVAL":   "3 Avaliações",
+  "DISCIPLINE_4EVAL":   "4 Avaliações",
+  "DISCIPLINE_INTERNSHIP": "Estágio / TCC"
+}

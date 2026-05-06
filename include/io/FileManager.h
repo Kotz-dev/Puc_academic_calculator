@@ -38,22 +38,20 @@ enum FileType {
     DATE   = 0x1475,
     CONFIG = 0x1010,
     PUCSimulador = 0x145,
-    FILE_IDIOMA = 0x117,
     FILE_Desgin = 0x147
-
 };
 
 enum PATCH_TYPE_ {
     FILE_styles = 0,
     FILE_IMAGE = 1,
-    FILE_IDIOMA_ = 2
 };
 
 struct FileSystemInfo {
     std::filesystem::path file_;
-    std::filesystem::path file_idioma;
     bool exist;
 };
+
+std::vector<std::filesystem::path> ListFiles(std::filesystem::path i);
 QString loadStyleSheet (std::string name,PATCH_TYPE_ Type);
 
 inline int getOperatingSystem () {
